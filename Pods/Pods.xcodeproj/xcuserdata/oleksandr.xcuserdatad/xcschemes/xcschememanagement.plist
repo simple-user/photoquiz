@@ -4,36 +4,49 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-PhotoQuizz.xcscheme</key>
+		<key>Pods-photoquiz.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>SwiftIcons-SwiftIcons.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>SwiftIcons.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>04A468F55BC0C38A85974268F94FD15B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>211569B0A3AE67E0C719834755ED5876</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9AB5E679EBDA84EBF2AD336EB0F1B1CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2F335E0F0B3C803DADBC77791BE5AE1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>
