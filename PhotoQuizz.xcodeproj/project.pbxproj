@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06D0D17691BFE651E7AC5B4C /* Pods_PhotoQuizz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1A3C09D89F4234875E2514 /* Pods_PhotoQuizz.framework */; };
 		1192BD5C1F3E4265002FF85A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192BD5B1F3E4265002FF85A /* AppDelegate.swift */; };
 		1192BD5E1F3E4265002FF85A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192BD5D1F3E4265002FF85A /* ViewController.swift */; };
 		1192BD611F3E4265002FF85A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1192BD5F1F3E4265002FF85A /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		021FDD549DACE946D21CC397 /* Pods-PhotoQuizz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoQuizz.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoQuizz/Pods-PhotoQuizz.release.xcconfig"; sourceTree = "<group>"; };
 		1192BD581F3E4265002FF85A /* PhotoQuizz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoQuizz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1192BD5B1F3E4265002FF85A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192BD5D1F3E4265002FF85A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		1192BD621F3E4265002FF85A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1192BD651F3E4265002FF85A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1192BD671F3E4265002FF85A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4137F7FDAF697C95C13DAB63 /* Pods-PhotoQuizz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoQuizz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoQuizz/Pods-PhotoQuizz.debug.xcconfig"; sourceTree = "<group>"; };
+		6D1A3C09D89F4234875E2514 /* Pods_PhotoQuizz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoQuizz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D0D17691BFE651E7AC5B4C /* Pods_PhotoQuizz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				1192BD5A1F3E4265002FF85A /* PhotoQuizz */,
 				1192BD591F3E4265002FF85A /* Products */,
+				B7B7435027F9A988D7657B7D /* Pods */,
+				9EE2114EB0298E63215800A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = PhotoQuizz;
 			sourceTree = "<group>";
 		};
+		9EE2114EB0298E63215800A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D1A3C09D89F4234875E2514 /* Pods_PhotoQuizz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7B7435027F9A988D7657B7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4137F7FDAF697C95C13DAB63 /* Pods-PhotoQuizz.debug.xcconfig */,
+				021FDD549DACE946D21CC397 /* Pods-PhotoQuizz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1192BD6A1F3E4265002FF85A /* Build configuration list for PBXNativeTarget "PhotoQuizz" */;
 			buildPhases = (
+				BC5EFAAA649FF9FF1F3C5F45 /* [CP] Check Pods Manifest.lock */,
 				1192BD541F3E4265002FF85A /* Sources */,
 				1192BD551F3E4265002FF85A /* Frameworks */,
 				1192BD561F3E4265002FF85A /* Resources */,
+				249EE9A9579D17D6AB0835BB /* [CP] Embed Pods Frameworks */,
+				CB2C96092A05F3CC011DA88C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		249EE9A9579D17D6AB0835BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoQuizz/Pods-PhotoQuizz-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoQuizz/Pods-PhotoQuizz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC5EFAAA649FF9FF1F3C5F45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoQuizz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB2C96092A05F3CC011DA88C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoQuizz/Pods-PhotoQuizz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1192BD541F3E4265002FF85A /* Sources */ = {
@@ -271,6 +354,7 @@
 		};
 		1192BD6B1F3E4265002FF85A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4137F7FDAF697C95C13DAB63 /* Pods-PhotoQuizz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoQuizz/Info.plist;
@@ -284,6 +368,7 @@
 		};
 		1192BD6C1F3E4265002FF85A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 021FDD549DACE946D21CC397 /* Pods-PhotoQuizz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PhotoQuizz/Info.plist;
