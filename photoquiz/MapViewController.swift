@@ -29,10 +29,14 @@ class MapViewController: UIViewController {
         self.addPoints()
     }
 
+    // adding points to the map
     private func addPoints() {
         self.mapView.addAnnotations(self.points)
     }
 
+    // get coord rect to whow all points
+    // position and size of this rect will be changed every time
+    // it will depend on positions of points
     private func getCoordRegion() -> MKCoordinateRegion? {
         if self.points.count == 0 {
             return nil
@@ -66,6 +70,7 @@ extension MapViewController: MKMapViewDelegate {
         print("delegte region: \(mapView.region)")
     }
 
+    // dequeue for points
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var view: MKAnnotationView
         if let dequeueView = mapView.dequeueReusableAnnotationView(withIdentifier: "HardcodedId") {
@@ -88,6 +93,7 @@ extension MapViewController: MKMapViewDelegate {
         return view
     }
 
+    // change point in to red after select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         view.image = #imageLiteral(resourceName: "bad")
         view.contentMode = .scaleAspectFit
