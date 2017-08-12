@@ -14,8 +14,10 @@ import SwiftyJSON
 class ViewController: UIViewController {
 
     @IBOutlet private var showMapButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
 
     var dbRef: DatabaseReference!
+    var storage: Storage!
     
     var photos = [PhotoDBModel]() {
         didSet {
@@ -28,6 +30,10 @@ class ViewController: UIViewController {
     // private property to save downloaded points to pass them in prepare for segue
     private var pointsToShow: [PhotoPoint]?
 
+    @IBAction func showRandomPhoto(_ sender: Any) {
+        getRandomPhoto()
+    }
+    
     @IBAction private func onShowMap() {
         self.showMapButton.isEnabled = false
         self.getPoints(userId: "") { points in
@@ -48,6 +54,23 @@ class ViewController: UIViewController {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             completion(points)
+        }
+    }
+    
+    private func getRandomPhoto() {
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(photos.count)))
+        let randomModel = photos[randomIndex]
+
+        let gsReference = storage.reference(forURL: randomModel.path)
+        gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                debugPrint(error)
+            } else {
+                // Data for "images/island.jpg" is returned
+                self.imageView.image = UIImage(data: data!)
+            }
         }
     }
     
@@ -78,6 +101,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         dbRef = Database.database().reference()
+        storage = Storage.storage()
         
         readPhotosFromDB(ref: dbRef)
     }

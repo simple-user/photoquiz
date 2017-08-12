@@ -8,5 +8,6 @@ target 'photoquiz' do
   pod 'SwiftyJSON', '~> 3.1'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-
+  pod 'Firebase/Storage'
+  
 end
