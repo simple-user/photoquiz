@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PhotoCollectionViewCellDelegate {
+    func onGuess()
+}
+
 class PhotoCollectionViewCell: UICollectionViewCell {
 
 

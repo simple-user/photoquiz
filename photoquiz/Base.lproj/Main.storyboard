@@ -33,6 +33,9 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dsn-Xp-euF"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewX-Yg-dzb">
                                 <rect key="frame" x="158.5" y="282" width="58" height="30"/>
@@ -67,6 +70,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="G51-Hc-4Nd" id="eyI-NK-8bh"/>
+                        <outlet property="collectionView" destination="rAF-tZ-VY0" id="cX3-dV-lIy"/>
+                        <segue destination="lmM-3w-noh" kind="show" identifier="toMap" id="HiL-Y5-Ddh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -169,11 +177,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Od5-sZ-xs4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9PA-lw-seZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="UFw-Lp-WZj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                                 <connections>
                                     <outlet property="delegate" destination="lmM-3w-noh" id="6s7-6O-ZSd"/>
                                 </connections>
@@ -224,4 +232,7 @@
             <point key="canvasLocation" x="1557.5999999999999" y="1163.568215892054"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HiL-Y5-Ddh"/>
+    </inferredMetricsTieBreakers>
 </document>

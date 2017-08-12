@@ -20,7 +20,9 @@ class ViewController: UIViewController {
     // selected models
     var currentModels = [PhotoDBModel]()
     // three images prepared to show
-    var currentImages = [UIImage]()
+    var currentImage = UIImage()
+    var previousImage: UIImage?
+    var nextImage: UIImage?
 
     // all points from db
     var models = [PhotoDBModel]() {
@@ -30,29 +32,23 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
-            let models = currentModels
-            let resultPoints = convertModelsToPoints(models: models)
-            dest.points = resultPoints
-        }
-    }
+    @IBOutlet var collectionView: UICollectionView!
 
     override func viewDidLoad() {
 
-//        self.activityIndicator.hidesWhenStopped = true
-//        self.activityIndicator.center = self.view.center
-//        self.view.addSubview(activityIndicator);
-//        self.activityIndicator.startAnimating()
+        self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+
+        self.activityIndicator.startAnimating()
+        self.collectionView.isHidden = true
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
         readPhotosFromDB(ref: dbRef) {
             self.setCurrentItems {
                 // here ready to go! :)
-//                self.activityIndicator.stopAnimating()
+                self.activityIndicator.stopAnimating()
+                self.collectionView.reloadData()
+                self.collectionView.isHidden = false
                 print("vse ok")
             }
         }
@@ -61,10 +57,16 @@ class ViewController: UIViewController {
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
         self.currentModels = getRandomModels(dummyPoints: 5)
 
-        let imagesCount = min(self.currentModels.count, 3)
+        let imagesCount = min(self.currentModels.count, 2)
         for index in 0 ..< imagesCount {
             getPhoto(fromModel: self.currentModels[index], completion: { image in
-                self.currentImages.append(image)
+
+                switch index {
+                case 0: self.currentImage = image
+                case 1: self.nextImage = image
+                default: break
+                }
+
                 if index == imagesCount - 1 {
                     DispatchQueue.main.async {
                         readyToGo()
@@ -80,11 +82,12 @@ class ViewController: UIViewController {
         self.parent?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func onShowMap() {
+    fileprivate func onShowMap() {
         if let drawer = self.parent as? PulleyViewController
         {
+            let resultPoints = convertModelsToPoints(models: currentModels)
             let mvc = drawer.drawerContentViewController as! MapViewController
-            mvc
+            mvc.points = resultPoints
             drawer.setDrawerPosition(position: .open)
         }
     }
@@ -145,6 +148,12 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: PhotoCollectionViewCellDelegate {
+    func onGuess() {
+        self.onShowMap()
+    }
+}
+
 extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -152,11 +161,14 @@ extension ViewController: UICollectionViewDataSource {
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return currentModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let view = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
+            as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+
+        return view
     }
 }
 
