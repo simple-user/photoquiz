@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     // selected models
     var currentModels = [PhotoDBModel]()
     // three images prepared to show
+    var currentImages = [UIImage]()
     var currentImage = #imageLiteral(resourceName: "noimage")
     var previousImage: UIImage?
     var nextImage: UIImage?
@@ -55,21 +56,17 @@ class ViewController: UIViewController {
     }
 
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
-        self.currentModels = getRandomModels(dummyPoints: 5)
+        self.currentModels = getRandomModels(dummyCount: 5)
+        self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
 
         let imagesCount = min(self.currentModels.count, 2)
         var imagesLoaded = 0
-        for index in 0 ..< imagesCount {
+        for index in 0 ..< self.currentModels.count {
             getPhoto(fromModel: self.currentModels[index], completion: { image in
 
-                switch index {
-                case 0:
-                    self.currentImage = image
+                self.currentImages[index] = image
+                if index == 0 || index == 1 {
                     imagesLoaded += 1
-                case 1:
-                    self.nextImage = image
-                    imagesLoaded += 1
-                default: break
                 }
 
                 if imagesLoaded == imagesCount {
@@ -80,33 +77,36 @@ class ViewController: UIViewController {
                 }
             })
         }
-
     }
-    
-    
+
     @IBAction func backToMenu(_ sender: Any) {
         self.parent?.dismiss(animated: true, completion: nil)
     }
     
-    fileprivate func onShowMap() {
+    fileprivate func onShowMap(trueModel: PhotoDBModel) {
         if let drawer = self.parent as? PulleyViewController
         {
-            let resultPoints = convertModelsToPoints(models: currentModels)
+            let dummyPoints = self.getRandomModels(dummyCount: 4)
+
+            var resultPoints = convertModelsToPoints(models: dummyPoints)
+            resultPoints.append(PhotoPoint(pointId: trueModel.id,
+                                           location: trueModel.location,
+                                           isTruePoint: true))
             let mvc = drawer.drawerContentViewController as! MapViewController
-            mvc.points = resultPoints
+            mvc.setPoints(points: resultPoints)
             drawer.setDrawerPosition(position: .open)
         }
     }
 
-    private func getRandomModels(dummyPoints: Int = 5) -> [PhotoDBModel] {
+    private func getRandomModels(dummyCount: Int = 5) -> [PhotoDBModel] {
 
         let randomModels = models.shuffled()
         
-        if dummyPoints >= models.count {
+        if dummyCount >= models.count {
             return randomModels
         }
         else {
-            return Array(randomModels[0..<dummyPoints])
+            return Array(randomModels[0 ..< dummyCount])
         }
     }
     
@@ -152,8 +152,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: PhotoCollectionViewCellDelegate {
-    func onGuess() {
-        self.onShowMap()
+    func onGuess(sender: UICollectionViewCell) {
+        guard let section = self.collectionView.indexPath(for: sender)?.section,
+            section < currentModels.count else { return }
+        self.onShowMap(trueModel: currentModels[section])
     }
 }
 
@@ -170,7 +172,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let view = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
             as? PhotoCollectionViewCell else { return UICollectionViewCell() }
-        view.imageView.image = self.currentImage
+        let image = self.currentImages[indexPath.section]
+        view.imageView.image = image
+        view.delegate = self
 
         return view
     }

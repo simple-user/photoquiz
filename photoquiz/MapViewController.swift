@@ -14,28 +14,40 @@ import Pulley
 class MapViewController: UIViewController {
 
     // input
-    var points: [PhotoPoint]!
+    func setPoints(points: [PhotoPoint]) {
+        self.points = points
+        self.centerMapOnLocation()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.centerMapOnLocation()
     }
 
-    @IBOutlet private var mapView: MKMapView!
+    override func viewDidDisappear(_ animated: Bool) {
+        self.rivneMapView.setRegion(self.stockRegion, animated: false)
+    }
+
+    @IBOutlet fileprivate var rivneMapView: MKMapView!
     fileprivate var tappedPoints = Set<PhotoPoint>()
+    fileprivate var points: [PhotoPoint]!
+    fileprivate var stockRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50.610946246904518,
+                                                                                    longitude: 26.257657015311921),
+                                                     span: MKCoordinateSpan(latitudeDelta: 0.17014498714487303,
+                                                                            longitudeDelta: 0.1868872709158893))
 
 
     private func centerMapOnLocation() {
         guard points != nil else { return }
         guard let coordinateRegion = self.getCoordRegion() else { return }
         print("my region: \(coordinateRegion)")
-        self.mapView.setRegion(coordinateRegion, animated: true)
+        self.rivneMapView.setRegion(coordinateRegion, animated: true)
         self.addPoints()
     }
 
     // adding points to the map
     private func addPoints() {
-        self.mapView.addAnnotations(self.points)
+        self.rivneMapView.addAnnotations(self.points)
     }
 
     // get coord rect to whow all points
@@ -70,6 +82,10 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
+
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("delegte region: \(mapView.region)")
+    }
 
     // dequeue for points
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -134,6 +150,13 @@ extension MapViewController: PulleyDrawerViewControllerDelegate {
     }
 }
 
+extension MapViewController: PulleyPrimaryContentControllerDelegate {
 
+    func drawerPositionDidChange(drawer: PulleyViewController) {
+        if drawer.drawerPosition == .collapsed {
+            self.rivneMapView.setRegion(self.stockRegion, animated: false)
+        }
+    }
+}
 
 
