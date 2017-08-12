@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import Pulley
 
 
 class ViewController: UIViewController {
@@ -54,8 +55,13 @@ class ViewController: UIViewController {
 
     }
     
+    
+    
     @IBAction private func onShowMap() {
-        self.performSegue(withIdentifier: "toMap", sender: nil)
+        if let drawer = self.parent as? PulleyViewController
+        {
+            drawer.setDrawerPosition(position: .open)
+        }
     }
 
     private func getRandomModels(dummyPoints: Int = 5) -> [PhotoDBModel] {

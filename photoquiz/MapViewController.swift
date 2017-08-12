@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import Pulley
+
 
 class MapViewController: UIViewController {
 
@@ -24,6 +26,7 @@ class MapViewController: UIViewController {
 
 
     private func centerMapOnLocation() {
+        guard points != nil else { return }
         guard let coordinateRegion = self.getCoordRegion() else { return }
         print("my region: \(coordinateRegion)")
         self.mapView.setRegion(coordinateRegion, animated: true)
@@ -114,6 +117,21 @@ extension MapViewController: MKMapViewDelegate {
 
     }
 
+}
+
+extension MapViewController: PulleyDrawerViewControllerDelegate {
+    
+    func partialRevealDrawerHeight() -> CGFloat {
+        return 0
+    }
+    
+    func supportedDrawerPositions() -> [PulleyPosition] {
+        return [.open, .partiallyRevealed, .closed]
+    }
+
+    func collapsedDrawerHeight() -> CGFloat {
+        return 0
+    }
 }
 
 
