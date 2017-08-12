@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     
     private func convertModelsToPoints(models: [PhotoDBModel]) -> [PhotoPoint] {
         guard let firstPoint = models.first else { return [] }
-        let truePoint = PhotoPoint(pointId: firstPoint.id, location: firstPoint.location)
+        let truePoint = PhotoPoint(pointId: firstPoint.id, location: firstPoint.location, isTruePoint: true)
         let points = models[1..<models.count].map {
             PhotoPoint(pointId: $0.id, location: $0.location)
         }
