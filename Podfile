@@ -6,5 +6,7 @@ target 'photoquiz' do
   use_frameworks!
   pod 'SwiftIcons', '~> 1.5'
   pod 'SwiftyJSON', '~> 3.1'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
 end

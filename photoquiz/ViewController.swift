@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
+
 
 class ViewController: UIViewController {
 
     @IBOutlet private var showMapButton: UIButton!
 
+    var dbRef: DatabaseReference!
+    
     // private property to save downloaded points to pass them in prepare for segue
     private var pointsToShow: [PhotoPoint]?
 
@@ -37,6 +42,16 @@ class ViewController: UIViewController {
             completion(points)
         }
     }
+    
+    private func readPhotosFromDB(ref: DatabaseReference) {
+        ref.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get photos
+            guard let value = snapshot.value as? NSDictionary else { return }
+            let json = JSON(value)
+            debugPrint(json.description)
+        })
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMap",
@@ -45,6 +60,12 @@ class ViewController: UIViewController {
             dest.points = points
             self.pointsToShow = nil
         }
+    }
+    
+    override func viewDidLoad() {
+        dbRef = Database.database().reference()
+        
+        readPhotosFromDB(ref: dbRef)
     }
 }
 

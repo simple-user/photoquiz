@@ -14,6 +14,7 @@
 		11536C261F3E52D900090506 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11536C241F3E52D900090506 /* LaunchScreen.storyboard */; };
 		117F297F1F3E5476004EB6D5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F297E1F3E5476004EB6D5 /* MapViewController.swift */; };
 		117F29811F3E556A004EB6D5 /* PhotoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F29801F3E556A004EB6D5 /* PhotoPoint.swift */; };
+		27A83EFC1F3EA0F100A1CD1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */; };
 		EF18957E46C2586250E9CA53 /* Pods_photoquiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7DB861F845ECDA9CA84500 /* Pods_photoquiz.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		11536C271F3E52D900090506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		117F297E1F3E5476004EB6D5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		117F29801F3E556A004EB6D5 /* PhotoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPoint.swift; sourceTree = "<group>"; };
+		27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F7DB861F845ECDA9CA84500 /* Pods_photoquiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_photoquiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B233B498CB11547062859059 /* Pods-photoquiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-photoquiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz.debug.xcconfig"; sourceTree = "<group>"; };
 		F32CDCE1418B88836F9A58FB /* Pods-photoquiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-photoquiz.release.xcconfig"; path = "Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz.release.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				11536C1D1F3E52D900090506 /* ViewController.swift */,
 				11536C1F1F3E52D900090506 /* Main.storyboard */,
 				117F297E1F3E5476004EB6D5 /* MapViewController.swift */,
+				27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */,
 				11536C221F3E52D900090506 /* Assets.xcassets */,
 				11536C241F3E52D900090506 /* LaunchScreen.storyboard */,
 				11536C271F3E52D900090506 /* Info.plist */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11536C261F3E52D900090506 /* LaunchScreen.storyboard in Resources */,
+				27A83EFC1F3EA0F100A1CD1A /* GoogleService-Info.plist in Resources */,
 				11536C231F3E52D900090506 /* Assets.xcassets in Resources */,
 				11536C211F3E52D900090506 /* Main.storyboard in Resources */,
 			);
@@ -203,7 +207,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		86C9403D50FA0FC924846EEE /* [CP] Embed Pods Frameworks */ = {
