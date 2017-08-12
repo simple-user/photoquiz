@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var dbRef: DatabaseReference!
     var storage: Storage!
     
+    var currentModels: [PhotoDBModel]?
     var currentPhotoModel: PhotoDBModel? {
         didSet {
             if let model = currentPhotoModel {
@@ -38,30 +39,35 @@ class ViewController: UIViewController {
     private var pointsToShow: [PhotoPoint]?
 
     @IBAction func showRandomPhoto(_ sender: Any) {
-        currentPhotoModel = getRandomPhoto()
+        currentModels = getRandomPhotos(dummyPoints: 5)
+        currentPhotoModel = currentModels?.first
     }
     
     @IBAction private func onShowMap() {
         self.performSegue(withIdentifier: "toMap", sender: nil)
     }
 
-    // stubbed func to get points
-//    private func getPoints(userId: String, completion: @escaping (_ points: [PhotoPoint]) -> Void) {
-//        guard let pointModel: PhotoDBModel = currentPhotoModel else { return }
-//        
-//        let truePoints = PhotoPoint(pointId: pointModel.id, location: pointModel.location)
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//            completion(truePoints)
-//        }
-//    }
-    
-    private func getRandomPhoto() -> PhotoDBModel {
+    private func getRandomPhotos(dummyPoints: Int = 5) -> [PhotoDBModel] {
 
-        let randomIndex = Int(arc4random_uniform(UInt32(photos.count)))
-        let randomModel = photos[randomIndex]
+        let randomModels = photos.shuffled()
         
-        return randomModel
+        if dummyPoints >= photos.count {
+            return randomModels
+        }
+        else {
+            return Array(randomModels[0..<dummyPoints])
+        }
+    }
+    
+    private func convertModelsToPoints(models: [PhotoDBModel]) -> [PhotoPoint] {
+        guard let firstPoint = models.first else { return [] }
+        let truePoint = PhotoPoint(pointId: firstPoint.id, location: firstPoint.location)
+        let points = models[1..<models.count].map {
+            PhotoPoint(pointId: $0.id, location: $0.location)
+        }
+        var resultPoints = points
+        resultPoints.append(truePoint)
+        return resultPoints
     }
     
     private func showRandomPhoto(model: PhotoDBModel) {
@@ -95,11 +101,9 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
-            guard let pointModel: PhotoDBModel = currentPhotoModel else { return }
-            let truePoint = PhotoPoint(pointId: pointModel.id, location: pointModel.location)
-
-            dest.points = [truePoint, truePoint]
+        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController, let models = currentModels {
+            let resultPoints = convertModelsToPoints(models: models)
+            dest.points = resultPoints
         }
     }
     
