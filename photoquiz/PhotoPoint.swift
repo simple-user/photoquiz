@@ -13,21 +13,15 @@ import MapKit
 
 class PhotoPoint: NSObject, MKAnnotation {
 
-    var coordinate: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
-    }
+    var coordinate: CLLocationCoordinate2D
 
-    let pointId: Int
-    let latitude: Double
-    let longitude: Double
-    let image: UIImage?
+    let id: String
+    let isTruePoint: Bool
 
-    init(pointId: Int, latitude: Double, longitude: Double, image: UIImage?) {
-        self.pointId = pointId
-        self.latitude = latitude
-        self.longitude = longitude
-        self.image = image
-
+    init(pointId: String, location: CLLocationCoordinate2D, isTruePoint: Bool = false) {
+        id = pointId
+        coordinate = location
+        self.isTruePoint = isTruePoint
         super.init()
     }
 

@@ -43,10 +43,10 @@ class MapViewController: UIViewController {
         } else if self.points.count == 1 {
             return nil //
         } else {
-            var minX = self.points[0].longitude
-            var minY = self.points[0].latitude
-            var maxX = self.points[0].longitude
-            var maxY = self.points[0].latitude
+            var minX = self.points[0].coordinate.longitude
+            var minY = self.points[0].coordinate.latitude
+            var maxX = self.points[0].coordinate.longitude
+            var maxY = self.points[0].coordinate.latitude
 
             for point in self.points {
                 minX = point.coordinate.longitude < minX ? point.coordinate.longitude : minX
