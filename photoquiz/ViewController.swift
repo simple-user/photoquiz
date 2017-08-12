@@ -17,6 +17,14 @@ class ViewController: UIViewController {
 
     var dbRef: DatabaseReference!
     
+    var photos = [PhotoDBModel]() {
+        didSet {
+            debugPrint("we have \(photos.count) photos")
+            
+            // Show a random photo
+        }
+    }
+    
     // private property to save downloaded points to pass them in prepare for segue
     private var pointsToShow: [PhotoPoint]?
 
@@ -49,7 +57,13 @@ class ViewController: UIViewController {
             // Get photos
             guard let value = snapshot.value as? NSDictionary else { return }
             let json = JSON(value)
-            debugPrint(json.description)
+            let photoModels:[PhotoDBModel]? = json.dictionary?.keys.map({
+                return PhotoDBModel(json: json[$0])
+            })
+            
+            if let p = photoModels {
+                self.photos = p
+            }
         })
     }
 
