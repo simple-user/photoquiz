@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import AssetsLibrary
+import Firebase
+
 
 class ContentViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
@@ -68,5 +70,38 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
     //MARK: - Working with final data
     func addAsset(image: UIImage, location: CLLocation) {
         debugPrint("got it!")
+        
+        let storage = Storage.storage()
+        let ref = storage.reference().child("photos_notApproved")
+        
+        guard let data = UIImagePNGRepresentation(image) else { return }
+        
+        let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            // Metadata contains file metadata such as size, content-type, and download URL.
+//            let downloadURL = metadata.downloadURL
+            
+            struct UploadPhotoModel {
+                
+                let id: String
+                let path: String
+                let lat: Double
+                let lon: Double
+            }
+            
+            if let path: String = metadata.path {
+//                let uploadPhotoModel = UploadPhotoModel(id: UUID().uuidString, path: path, lat: location.coordinate.latitude, lon: location.coordinate.latitude)
+                
+                let dict = ["id": UUID().uuidString, "path": path, "location":["lat":location.coordinate.latitude, "lon":location.coordinate.latitude]] as [String : Any]
+
+                let ref = Database.database().reference()
+                ref.child("photos_notApproved").setValue(dict)
+            }
+        }
+        uploadTask.resume()
+        
     }
 }
