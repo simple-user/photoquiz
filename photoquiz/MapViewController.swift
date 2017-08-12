@@ -20,6 +20,7 @@ class MapViewController: UIViewController {
     }
 
     @IBOutlet private var mapView: MKMapView!
+    fileprivate var tappedPoints = Set<PhotoPoint>()
 
 
     private func centerMapOnLocation() {
@@ -78,24 +79,30 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: "HardcodedId")
         }
-        view.image = #imageLiteral(resourceName: "normal")
-        view.contentMode = .scaleAspectFit
-        let x = view.frame.origin.x
-        let y = view.frame.origin.y
-        let w = view.frame.width
-        let h = view.frame.height
-        let w1: CGFloat = 20.0
-        let h1: CGFloat = 20.0
-        view.frame = CGRect(x: x + ((w - w1) / 2),
-                            y: y + ((h - h1) / 2),
-                            width: w1,
-                            height: h1)
+        self.setImage(#imageLiteral(resourceName: "normal"), forView: view)
         return view
     }
 
     // change point in to red after select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        view.image = #imageLiteral(resourceName: "bad")
+        guard let pin = view.annotation as? PhotoPoint else { return }
+        if self.tappedPoints.contains(where: { point -> Bool in
+            point.id == pin.id
+        }) {
+            // we have already tapped this point
+            return
+        }
+        if pin.isTruePoint {
+            self.dismiss(animated: true, completion: nil)
+            return
+        }
+        self.tappedPoints.insert(pin)
+        self.setImage(#imageLiteral(resourceName: "bad"), forView: view)
+    }
+
+    // func to set image for ping (with size correction)
+    private func setImage(_ image: UIImage, forView view: MKAnnotationView) {
+        view.image = image
         view.contentMode = .scaleAspectFit
         let x = view.frame.origin.x
         let y = view.frame.origin.y
