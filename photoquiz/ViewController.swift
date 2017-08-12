@@ -19,7 +19,9 @@ class ViewController: UIViewController {
     // selected models
     var currentModels = [PhotoDBModel]()
     // three images prepared to show
-    var currentImages = [UIImage]()
+    var currentImage = UIImage()
+    var previousImage: UIImage?
+    var nextImage: UIImage?
 
     // all points from db
     var models = [PhotoDBModel]() {
@@ -29,7 +31,7 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet var collectionView: UICollectionView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
@@ -41,10 +43,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
 
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator);
+        self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+
         self.activityIndicator.startAnimating()
+        self.collectionView.isHidden = true
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -52,6 +54,8 @@ class ViewController: UIViewController {
             self.setCurrentItems {
                 // here ready to go! :)
                 self.activityIndicator.stopAnimating()
+                self.collectionView.reloadData()
+                self.collectionView.isHidden = false
                 print("vse ok")
             }
         }
@@ -60,10 +64,16 @@ class ViewController: UIViewController {
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
         self.currentModels = getRandomModels(dummyPoints: 5)
 
-        let imagesCount = min(self.currentModels.count, 3)
+        let imagesCount = min(self.currentModels.count, 2)
         for index in 0 ..< imagesCount {
             getPhoto(fromModel: self.currentModels[index], completion: { image in
-                self.currentImages.append(image)
+
+                switch index {
+                case 0: self.currentImage = image
+                case 1: self.nextImage = image
+                default: break
+                }
+
                 if index == imagesCount - 1 {
                     DispatchQueue.main.async {
                         readyToGo()
@@ -141,11 +151,14 @@ extension ViewController: UICollectionViewDataSource {
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return currentModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let view = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
+            as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+
+        return view
     }
 }
 
