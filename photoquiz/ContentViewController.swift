@@ -8,12 +8,14 @@
 
 import UIKit
 import Photos
+import AssetsLibrary
 
-class ContentViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ContentViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
-    let imagePicker: UIImagePickerController = UIImagePickerController()
+    let imagePicker = UIImagePickerController()
+    let locationManager = CLLocationManager()
     var image: UIImage? = nil
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePicker.delegate = self
@@ -35,18 +37,36 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //MARK: - Done image capturing
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true, completion: nil)
+        self.imagePicker.dismiss(animated: true, completion: nil)
         self.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
-        // Lets extract metedata
-        if let URL = info[UIImagePickerControllerReferenceURL] as? URL {
-            let opts = PHFetchOptions()
-            opts.fetchLimit = 1
-            let assets = PHAsset.fetchAssets(withALAssetURLs: [URL], options: opts)
-            let asset = assets[0]
-            debugPrint("Location info is: \(String(describing: asset.location))")
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.delegate = self
+            self.locationManager.requestLocation()
+        }
+        else {
+            debugPrint("Location Services disabled.")
         }
     }
-
     
+    //MARK: - Location Manager Delegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let image = self.image else { return }
+        guard let location = locations.first else { return }
+        
+        self.addAsset(image: image, location: location)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        debugPrint("\(error.localizedDescription)")
+    }
+
+    //MARK: - Working with final data
+    func addAsset(image: UIImage, location: CLLocation) {
+        debugPrint("got it!")
+    }
 }
