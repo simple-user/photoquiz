@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     var dbRef: DatabaseReference!
     var storage: Storage!
-    
+
     // selected models
     var currentModels = [PhotoDBModel]()
     // three images prepared to show
@@ -29,6 +29,9 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
             let models = currentModels
@@ -38,18 +41,35 @@ class ViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+
+//        self.activityIndicator.hidesWhenStopped = true
+//        self.activityIndicator.center = self.view.center
+//        self.view.addSubview(activityIndicator);
+//        self.activityIndicator.startAnimating()
+
         dbRef = Database.database().reference()
         storage = Storage.storage()
-        readPhotosFromDB(ref: dbRef)
-        self.setCurrentItems()
+        readPhotosFromDB(ref: dbRef) {
+            self.setCurrentItems {
+                // here ready to go! :)
+//                self.activityIndicator.stopAnimating()
+                print("vse ok")
+            }
+        }
     }
 
-    fileprivate func setCurrentItems() {
+    fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
         self.currentModels = getRandomModels(dummyPoints: 5)
 
-        for index in 0 ..< min(self.currentModels.count, 3) {
+        let imagesCount = min(self.currentModels.count, 3)
+        for index in 0 ..< imagesCount {
             getPhoto(fromModel: self.currentModels[index], completion: { image in
-                self.currentImages[index] = image
+                self.currentImages.append(image)
+                if index == imagesCount - 1 {
+                    DispatchQueue.main.async {
+                        readyToGo()
+                    }
+                }
             })
         }
 
@@ -102,7 +122,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func readPhotosFromDB(ref: DatabaseReference) {
+    private func readPhotosFromDB(ref: DatabaseReference, complited: @escaping () -> Void ) {
         ref.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Get photos
@@ -115,6 +135,7 @@ class ViewController: UIViewController {
             if let p = photoModels {
                 self.models = p
             }
+            complited()
         })
     }
 }
