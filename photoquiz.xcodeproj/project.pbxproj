@@ -17,6 +17,7 @@
 		27A83EFC1F3EA0F100A1CD1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */; };
 		27A83EFE1F3EB40D00A1CD1A /* PhotoDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A83EFD1F3EB40D00A1CD1A /* PhotoDBModel.swift */; };
 		27A83F001F3F023500A1CD1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A83EFF1F3F023500A1CD1A /* Extensions.swift */; };
+		30016B8C1F3F0FAC00A064E4 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30016B8B1F3F0FAC00A064E4 /* ContentViewController.swift */; };
 		EF18957E46C2586250E9CA53 /* Pods_photoquiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F7DB861F845ECDA9CA84500 /* Pods_photoquiz.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27A83EFD1F3EB40D00A1CD1A /* PhotoDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDBModel.swift; sourceTree = "<group>"; };
 		27A83EFF1F3F023500A1CD1A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		30016B8B1F3F0FAC00A064E4 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7F7DB861F845ECDA9CA84500 /* Pods_photoquiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_photoquiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B233B498CB11547062859059 /* Pods-photoquiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-photoquiz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz.debug.xcconfig"; sourceTree = "<group>"; };
 		F32CDCE1418B88836F9A58FB /* Pods-photoquiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-photoquiz.release.xcconfig"; path = "Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				27A83EFF1F3F023500A1CD1A /* Extensions.swift */,
 				11536C1F1F3E52D900090506 /* Main.storyboard */,
 				117F297E1F3E5476004EB6D5 /* MapViewController.swift */,
+				30016B8B1F3F0FAC00A064E4 /* ContentViewController.swift */,
 				27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */,
 				11536C221F3E52D900090506 /* Assets.xcassets */,
 				11536C241F3E52D900090506 /* LaunchScreen.storyboard */,
@@ -249,6 +252,7 @@
 				117F297F1F3E5476004EB6D5 /* MapViewController.swift in Sources */,
 				11536C1C1F3E52D900090506 /* AppDelegate.swift in Sources */,
 				117F29811F3E556A004EB6D5 /* PhotoPoint.swift in Sources */,
+				30016B8C1F3F0FAC00A064E4 /* ContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
