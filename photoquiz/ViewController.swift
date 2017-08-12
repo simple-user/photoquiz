@@ -79,7 +79,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func backToMenu(_ sender: Any) {
-        
+        self.parent?.dismiss(animated: true, completion: nil)
     }
     
     fileprivate func onShowMap() {

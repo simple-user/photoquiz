@@ -122,11 +122,11 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: PulleyDrawerViewControllerDelegate {
     
     func partialRevealDrawerHeight() -> CGFloat {
-        return 0
+        return 100
     }
     
     func supportedDrawerPositions() -> [PulleyPosition] {
-        return [.open, .partiallyRevealed, .closed]
+        return [.open, .partiallyRevealed, .closed, .collapsed]
     }
 
     func collapsedDrawerHeight() -> CGFloat {
