@@ -38,6 +38,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Hc-4Nd">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <color key="color" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -45,10 +49,13 @@
                             <constraint firstAttribute="trailing" secondItem="rAF-tZ-VY0" secondAttribute="trailing" id="V2Q-DB-WIw"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="atD-W2-tIC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAF-tZ-VY0" secondAttribute="bottom" id="cCx-fM-AWF"/>
+                            <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fKj-db-axg"/>
+                            <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hOJ-uq-rrV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="G51-Hc-4Nd" id="eyI-NK-8bh"/>
                         <segue destination="lmM-3w-noh" kind="show" identifier="toMap" id="HiL-Y5-Ddh"/>
                     </connections>
                 </viewController>
