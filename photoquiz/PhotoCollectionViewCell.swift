@@ -15,8 +15,8 @@ protocol PhotoCollectionViewCellDelegate {
 class PhotoCollectionViewCell: UICollectionViewCell {
 
 
-    @IBOutlet var contentHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var contenetWidthConstraint: NSLayoutConstraint!
+//    @IBOutlet var contentHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet var contenetWidthConstraint: NSLayoutConstraint!
     @IBOutlet var guessButton: UIButton!
     @IBOutlet var imageView: UIImageView!
 

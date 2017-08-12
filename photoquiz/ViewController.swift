@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     // selected models
     var currentModels = [PhotoDBModel]()
     // three images prepared to show
-    var currentImage = UIImage()
+    var currentImage = #imageLiteral(resourceName: "noimage")
     var previousImage: UIImage?
     var nextImage: UIImage?
 
@@ -58,17 +58,23 @@ class ViewController: UIViewController {
         self.currentModels = getRandomModels(dummyPoints: 5)
 
         let imagesCount = min(self.currentModels.count, 2)
+        var imagesLoaded = 0
         for index in 0 ..< imagesCount {
             getPhoto(fromModel: self.currentModels[index], completion: { image in
 
                 switch index {
-                case 0: self.currentImage = image
-                case 1: self.nextImage = image
+                case 0:
+                    self.currentImage = image
+                    imagesLoaded += 1
+                case 1:
+                    self.nextImage = image
+                    imagesLoaded += 1
                 default: break
                 }
 
-                if index == imagesCount - 1 {
+                if imagesLoaded == imagesCount {
                     DispatchQueue.main.async {
+                        print("readyToGo()")
                         readyToGo()
                     }
                 }
@@ -105,14 +111,11 @@ class ViewController: UIViewController {
     }
     
     private func convertModelsToPoints(models: [PhotoDBModel]) -> [PhotoPoint] {
-        guard let firstPoint = models.first else { return [] }
-        let truePoint = PhotoPoint(pointId: firstPoint.id, location: firstPoint.location, isTruePoint: true)
+        guard models.first != nil else { return [] }
         let points = models[1..<models.count].map {
             PhotoPoint(pointId: $0.id, location: $0.location)
         }
-        var resultPoints = points
-        resultPoints.append(truePoint)
-        return resultPoints
+        return points
     }
     
     private func getPhoto(fromModel model: PhotoDBModel, completion: @escaping (UIImage) -> Void) {
@@ -167,8 +170,15 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let view = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath)
             as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+        view.imageView.image = self.currentImage
 
         return view
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.bounds.size
     }
 }
 
