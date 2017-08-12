@@ -220,7 +220,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="UFw-Lp-WZj">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UFw-Lp-WZj">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                                 <connections>
                                     <outlet property="delegate" destination="lmM-3w-noh" id="6s7-6O-ZSd"/>
@@ -264,7 +264,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mapView" destination="UFw-Lp-WZj" id="RUF-ks-l61"/>
+                        <outlet property="rivneMapView" destination="UFw-Lp-WZj" id="1GD-Ok-gCp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUQ-ng-p11" userLabel="First Responder" sceneMemberID="firstResponder"/>

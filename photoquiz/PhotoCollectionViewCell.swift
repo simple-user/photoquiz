@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol PhotoCollectionViewCellDelegate {
-    func onGuess()
+protocol PhotoCollectionViewCellDelegate: class {
+    func onGuess(sender: UICollectionViewCell)
 }
 
 class PhotoCollectionViewCell: UICollectionViewCell {
@@ -20,7 +20,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet var guessButton: UIButton!
     @IBOutlet var imageView: UIImageView!
 
-    @IBAction func onGuess() {
+    weak var delegate: PhotoCollectionViewCellDelegate?
 
+    @IBAction func onGuess() {
+        delegate?.onGuess(sender: self)
     }
 }
