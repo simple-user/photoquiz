@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        centerMapOnLocation()
+        self.centerMapOnLocation()
     }
 
     @IBOutlet private var mapView: MKMapView!
@@ -67,9 +67,6 @@ class MapViewController: UIViewController {
 }
 
 extension MapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("delegte region: \(mapView.region)")
-    }
 
     // dequeue for points
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -93,7 +90,7 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         if pin.isTruePoint {
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
             return
         }
         self.tappedPoints.insert(pin)
