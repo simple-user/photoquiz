@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -84,10 +83,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OZn-Yn-qXc">
-                                <rect key="frame" x="37.5" y="265.5" width="300" height="136"/>
+                                <rect key="frame" x="77" y="486" width="222" height="136"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-1m-WsO">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="58"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="222" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
@@ -95,7 +94,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgI-hP-6s5">
-                                        <rect key="frame" x="0.0" y="78" width="300" height="58"/>
+                                        <rect key="frame" x="0.0" y="78" width="222" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
                                         <state key="normal" title="Add Content"/>
                                         <connections>
@@ -104,19 +103,67 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="river" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-U2-buI">
+                                <rect key="frame" x="-80" y="201" width="150" height="150"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waterfall" translatesAutoresizingMaskIntoConstraints="NO" id="vbJ-Vr-pkH">
+                                <rect key="frame" x="94" y="225" width="70" height="70"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="windmills" translatesAutoresizingMaskIntoConstraints="NO" id="ODg-eB-QrK">
+                                <rect key="frame" x="213" y="222" width="40" height="40"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spruce" translatesAutoresizingMaskIntoConstraints="NO" id="ewl-yc-N9x">
+                                <rect key="frame" x="289" y="215" width="60" height="60"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityscape" translatesAutoresizingMaskIntoConstraints="NO" id="asW-HQ-KFY">
+                                <rect key="frame" x="194" y="308" width="120" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="island" translatesAutoresizingMaskIntoConstraints="NO" id="A6r-5A-2SE">
+                                <rect key="frame" x="312" y="377" width="120" height="120"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mill" translatesAutoresizingMaskIntoConstraints="NO" id="3g0-PZ-Zhc">
+                                <rect key="frame" x="61" y="334" width="100" height="100"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fields1" translatesAutoresizingMaskIntoConstraints="NO" id="EcO-SK-d78">
+                                <rect key="frame" x="-50" y="427" width="110" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="vW5-lK-YDe"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group" translatesAutoresizingMaskIntoConstraints="NO" id="7Ms-FC-Hpn">
+                                <rect key="frame" x="75" y="78" width="225" height="113"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="OZn-Yn-qXc" firstAttribute="width" secondItem="ymL-iF-JKo" secondAttribute="width" multiplier="0.8" id="YdQ-Fy-deP"/>
-                            <constraint firstItem="OZn-Yn-qXc" firstAttribute="centerY" secondItem="ymL-iF-JKo" secondAttribute="centerY" id="hgU-KL-hVM"/>
-                            <constraint firstItem="OZn-Yn-qXc" firstAttribute="centerX" secondItem="ymL-iF-JKo" secondAttribute="centerX" id="vfJ-M2-n8D"/>
+                            <constraint firstItem="7Ms-FC-Hpn" firstAttribute="centerX" secondItem="ymL-iF-JKo" secondAttribute="centerX" id="5K7-CA-XiA"/>
+                            <constraint firstItem="qIS-kF-XPv" firstAttribute="top" secondItem="OZn-Yn-qXc" secondAttribute="bottom" constant="45" id="9FB-0V-aem"/>
+                            <constraint firstItem="vbJ-Vr-pkH" firstAttribute="top" secondItem="7Ms-FC-Hpn" secondAttribute="bottom" constant="34" id="BXm-Mn-RWL"/>
+                            <constraint firstItem="ODg-eB-QrK" firstAttribute="top" secondItem="7Ms-FC-Hpn" secondAttribute="bottom" constant="31" id="Cwx-h6-njf"/>
+                            <constraint firstItem="EcO-SK-d78" firstAttribute="top" secondItem="rkY-U2-buI" secondAttribute="bottom" constant="76" id="DdY-Ty-XNy"/>
+                            <constraint firstItem="ewl-yc-N9x" firstAttribute="leading" secondItem="ODg-eB-QrK" secondAttribute="trailing" constant="36" id="Gav-hk-E3i"/>
+                            <constraint firstItem="OZn-Yn-qXc" firstAttribute="centerX" secondItem="ymL-iF-JKo" secondAttribute="centerX" id="IUV-df-gYj"/>
+                            <constraint firstItem="ewl-yc-N9x" firstAttribute="top" secondItem="7Ms-FC-Hpn" secondAttribute="bottom" constant="24" id="Ksc-da-501"/>
+                            <constraint firstItem="qIS-kF-XPv" firstAttribute="top" secondItem="EcO-SK-d78" secondAttribute="bottom" constant="140" id="Nux-dJ-fEe"/>
+                            <constraint firstItem="OZn-Yn-qXc" firstAttribute="top" secondItem="3g0-PZ-Zhc" secondAttribute="bottom" constant="52" id="Tfb-i3-D2S"/>
+                            <constraint firstItem="EcO-SK-d78" firstAttribute="leading" secondItem="ymL-iF-JKo" secondAttribute="leadingMargin" constant="-66" id="VhH-zZ-n8h"/>
+                            <constraint firstItem="rkY-U2-buI" firstAttribute="leading" secondItem="ymL-iF-JKo" secondAttribute="leadingMargin" constant="-96" id="Wsr-sM-iqg"/>
+                            <constraint firstItem="asW-HQ-KFY" firstAttribute="top" secondItem="ewl-yc-N9x" secondAttribute="bottom" constant="33" id="Xoj-n5-kcJ"/>
+                            <constraint firstItem="3g0-PZ-Zhc" firstAttribute="top" secondItem="vbJ-Vr-pkH" secondAttribute="bottom" constant="39" id="dzR-SF-04I"/>
+                            <constraint firstItem="7Ms-FC-Hpn" firstAttribute="top" secondItem="0Uh-hM-G7U" secondAttribute="bottom" constant="58" id="eHx-mO-zLO"/>
+                            <constraint firstItem="3g0-PZ-Zhc" firstAttribute="leading" secondItem="EcO-SK-d78" secondAttribute="trailing" constant="1" id="hAe-Z1-dH6"/>
+                            <constraint firstItem="A6r-5A-2SE" firstAttribute="leading" secondItem="OZn-Yn-qXc" secondAttribute="trailing" constant="13" id="htb-xO-b5D"/>
+                            <constraint firstItem="asW-HQ-KFY" firstAttribute="leading" secondItem="3g0-PZ-Zhc" secondAttribute="trailing" constant="33" id="i49-sO-ekB"/>
+                            <constraint firstItem="ODg-eB-QrK" firstAttribute="leading" secondItem="vbJ-Vr-pkH" secondAttribute="trailing" constant="49" id="iUN-DV-gP0"/>
+                            <constraint firstItem="qIS-kF-XPv" firstAttribute="top" secondItem="A6r-5A-2SE" secondAttribute="bottom" constant="170" id="qtZ-Vi-D9A"/>
+                            <constraint firstItem="vbJ-Vr-pkH" firstAttribute="leading" secondItem="rkY-U2-buI" secondAttribute="trailing" constant="24" id="wRJ-z1-85x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t4Q-C7-qhk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPq-Hk-ixH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-127" y="804"/>
+            <point key="canvasLocation" x="-127.2" y="803.74812593703155"/>
         </scene>
         <!--Pulley View Controller-->
         <scene sceneID="1id-gA-7DA">
@@ -223,6 +270,17 @@
             <point key="canvasLocation" x="1557.5999999999999" y="1163.568215892054"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cityscape" width="120" height="120"/>
+        <image name="fields1" width="110" height="110"/>
+        <image name="group" width="225" height="113"/>
+        <image name="island" width="120" height="120"/>
+        <image name="mill" width="100" height="100"/>
+        <image name="river" width="150" height="150"/>
+        <image name="spruce" width="60" height="60"/>
+        <image name="waterfall" width="70" height="70"/>
+        <image name="windmills" width="40" height="40"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HiL-Y5-Ddh"/>
     </inferredMetricsTieBreakers>
