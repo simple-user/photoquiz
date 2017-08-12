@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftyJSON
+import Pulley
 
 
 class ViewController: UIViewController {
@@ -32,14 +33,6 @@ class ViewController: UIViewController {
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var collectionView: UICollectionView!
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
-            let models = currentModels
-            let resultPoints = convertModelsToPoints(models: models)
-            dest.points = resultPoints
-        }
-    }
 
     override func viewDidLoad() {
 
@@ -84,8 +77,19 @@ class ViewController: UIViewController {
 
     }
     
-    @IBAction private func onShowMap() {
-        self.performSegue(withIdentifier: "toMap", sender: nil)
+    
+    @IBAction func backToMenu(_ sender: Any) {
+        
+    }
+    
+    fileprivate func onShowMap() {
+        if let drawer = self.parent as? PulleyViewController
+        {
+            let resultPoints = convertModelsToPoints(models: currentModels)
+            let mvc = drawer.drawerContentViewController as! MapViewController
+            mvc.points = resultPoints
+            drawer.setDrawerPosition(position: .open)
+        }
     }
 
     private func getRandomModels(dummyPoints: Int = 5) -> [PhotoDBModel] {
@@ -141,6 +145,12 @@ class ViewController: UIViewController {
             }
             complited()
         })
+    }
+}
+
+extension ViewController: PhotoCollectionViewCellDelegate {
+    func onGuess() {
+        self.onShowMap()
     }
 }
 
