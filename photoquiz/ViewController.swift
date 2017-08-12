@@ -77,12 +77,14 @@ class ViewController: UIViewController {
     
     
     @IBAction func backToMenu(_ sender: Any) {
-        
+        self.parent?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func onShowMap() {
         if let drawer = self.parent as? PulleyViewController
         {
+            let mvc = drawer.drawerContentViewController as! MapViewController
+            mvc
             drawer.setDrawerPosition(position: .open)
         }
     }
