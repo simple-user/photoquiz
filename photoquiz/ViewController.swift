@@ -13,9 +13,6 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
 
-    @IBOutlet private var showMapButton: UIButton!
-    @IBOutlet weak var imageView: UIImageView!
-
     var dbRef: DatabaseReference!
     var storage: Storage!
     
@@ -30,11 +27,23 @@ class ViewController: UIViewController {
             debugPrint("we have \(models.count) photos")
         }
     }
-    
-    // private property to save downloaded points to pass them in prepare for segue
-    private var pointsToShow: [PhotoPoint]?
 
-    func setCurrentItems() {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
+            let models = currentModels
+            let resultPoints = convertModelsToPoints(models: models)
+            dest.points = resultPoints
+        }
+    }
+
+    override func viewDidLoad() {
+        dbRef = Database.database().reference()
+        storage = Storage.storage()
+        readPhotosFromDB(ref: dbRef)
+        self.setCurrentItems()
+    }
+
+    fileprivate func setCurrentItems() {
         self.currentModels = getRandomModels(dummyPoints: 5)
 
         for index in 0 ..< min(self.currentModels.count, 3) {
@@ -101,21 +110,6 @@ class ViewController: UIViewController {
                 self.models = p
             }
         })
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
-            let models = currentModels
-            let resultPoints = convertModelsToPoints(models: models)
-            dest.points = resultPoints
-        }
-    }
-    
-    override func viewDidLoad() {
-        dbRef = Database.database().reference()
-        storage = Storage.storage()
-        
-        readPhotosFromDB(ref: dbRef)
     }
 }
 

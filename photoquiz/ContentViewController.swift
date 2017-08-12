@@ -17,7 +17,11 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.imagePicker.delegate = self
-        self.imagePicker.sourceType = .camera // photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            self.imagePicker.sourceType = .camera
+        } else {
+            self.imagePicker.sourceType = .photoLibrary
+        }
     }
 
     override func didReceiveMemoryWarning() {
