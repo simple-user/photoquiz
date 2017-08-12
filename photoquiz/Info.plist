@@ -45,5 +45,7 @@
     <string>This app will use camera.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>You can select photos to attach to reports.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>App will use you current location in order to add photo on the map</string>
 </dict>
 </plist>
