@@ -19,39 +19,41 @@ class ViewController: UIViewController {
     var dbRef: DatabaseReference!
     var storage: Storage!
     
-    var currentModels: [PhotoDBModel]?
-    var currentPhotoModel: PhotoDBModel? {
+    // selected models
+    var currentModels = [PhotoDBModel]()
+    // three images prepared to show
+    var currentImages = [UIImage]()
+
+    // all points from db
+    var models = [PhotoDBModel]() {
         didSet {
-            if let model = currentPhotoModel {
-                showRandomPhoto(model: model)
-            }
-        }
-    }
-    var photos = [PhotoDBModel]() {
-        didSet {
-            debugPrint("we have \(photos.count) photos")
-            
-            // Show a random photo
+            debugPrint("we have \(models.count) photos")
         }
     }
     
     // private property to save downloaded points to pass them in prepare for segue
     private var pointsToShow: [PhotoPoint]?
 
-    @IBAction func showRandomPhoto(_ sender: Any) {
-        currentModels = getRandomPhotos(dummyPoints: 5)
-        currentPhotoModel = currentModels?.first
+    func setCurrentItems() {
+        self.currentModels = getRandomModels(dummyPoints: 5)
+
+        for index in 0 ..< min(self.currentModels.count, 3) {
+            getPhoto(fromModel: self.currentModels[index], completion: { image in
+                self.currentImages[index] = image
+            })
+        }
+
     }
     
     @IBAction private func onShowMap() {
         self.performSegue(withIdentifier: "toMap", sender: nil)
     }
 
-    private func getRandomPhotos(dummyPoints: Int = 5) -> [PhotoDBModel] {
+    private func getRandomModels(dummyPoints: Int = 5) -> [PhotoDBModel] {
 
-        let randomModels = photos.shuffled()
+        let randomModels = models.shuffled()
         
-        if dummyPoints >= photos.count {
+        if dummyPoints >= models.count {
             return randomModels
         }
         else {
@@ -70,16 +72,17 @@ class ViewController: UIViewController {
         return resultPoints
     }
     
-    private func showRandomPhoto(model: PhotoDBModel) {
+    private func getPhoto(fromModel model: PhotoDBModel, completion: @escaping (UIImage) -> Void) {
         
         let gsReference = storage.reference(forURL: model.path)
         gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if let error = error {
                 // Uh-oh, an error occurred!
                 debugPrint(error)
+                completion(#imageLiteral(resourceName: "noimage"))
             } else {
                 // Data for "images/island.jpg" is returned
-                self.imageView.image = UIImage(data: data!)
+                completion(UIImage(data: data!) ?? #imageLiteral(resourceName: "noimage"))
             }
         }
     }
@@ -95,13 +98,14 @@ class ViewController: UIViewController {
             })
             
             if let p = photoModels {
-                self.photos = p
+                self.models = p
             }
         })
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController, let models = currentModels {
+        if segue.identifier == "toMap", let dest = segue.destination as? MapViewController {
+            let models = currentModels
             let resultPoints = convertModelsToPoints(models: models)
             dest.points = resultPoints
         }
@@ -114,4 +118,22 @@ class ViewController: UIViewController {
         readPhotosFromDB(ref: dbRef)
     }
 }
+
+extension ViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+}
+
+
+
 
