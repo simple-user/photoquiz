@@ -37,6 +37,12 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="GUL-fB-O4c"/>
                                 </connections>
                             </collectionView>
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle4" translatesAutoresizingMaskIntoConstraints="NO" id="scZ-tO-ezg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="wCB-8f-E8j"/>
+                                </constraints>
+                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Hc-4Nd">
                                 <rect key="frame" x="177.5" y="150" width="20" height="20"/>
                                 <color key="color" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,14 +57,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="scZ-tO-ezg" secondAttribute="trailing" id="04f-QX-nK9"/>
                             <constraint firstItem="4Zl-kg-a55" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oho-8l-Euv"/>
                             <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S3s-0B-W64"/>
                             <constraint firstItem="4Zl-kg-a55" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Sod-6J-I6m"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Spk-i7-mT8"/>
                             <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TVn-br-1a4"/>
                             <constraint firstAttribute="trailing" secondItem="rAF-tZ-VY0" secondAttribute="trailing" id="V2Q-DB-WIw"/>
+                            <constraint firstItem="scZ-tO-ezg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W8m-3w-hnY"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bY3-aU-ThG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAF-tZ-VY0" secondAttribute="bottom" id="cCx-fM-AWF"/>
+                            <constraint firstItem="scZ-tO-ezg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fCi-GT-c93"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
@@ -162,6 +171,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="t4Q-C7-qhk"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPq-Hk-ixH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,6 +206,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="initialDrawerPositionFromIB" value="closed"/>
                     </userDefinedRuntimeAttributes>
@@ -287,6 +298,7 @@
         <image name="group" width="225" height="113"/>
         <image name="island" width="120" height="120"/>
         <image name="mill" width="100" height="100"/>
+        <image name="rectangle4" width="1" height="87"/>
         <image name="river" width="150" height="150"/>
         <image name="spruce" width="60" height="60"/>
         <image name="waterfall" width="70" height="70"/>
