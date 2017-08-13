@@ -72,6 +72,7 @@ class MapViewController: UIViewController {
 
     fileprivate func removePoints() {
         guard self.rivneMapView != nil && self.points != nil else { return }
+        tappedPoints.removeAll()
         self.rivneMapView.removeAnnotations(self.points)
     }
 
