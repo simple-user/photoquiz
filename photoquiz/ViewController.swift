@@ -25,6 +25,7 @@ class ViewController: UIViewController {
             stepPB?.stepsCount = currentModels.count
         }
     }
+    var guessedIndexes = [Int]()
     // three images prepared to show
     var currentImages = [UIImage]()
     var currentImage = #imageLiteral(resourceName: "noimage")
@@ -159,6 +160,8 @@ class ViewController: UIViewController {
 
     func showNextImage() {
 
+        guessedIndexes.append(currentIndex)
+        
         self.rightAnswers += 5
         if self.rightAnswers == self.currentModels.count {
             // end of the round
