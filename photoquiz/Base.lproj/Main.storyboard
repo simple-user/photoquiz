@@ -227,10 +227,10 @@
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="San-RW-LNc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-uD-nze">
-                                        <rect key="frame" x="167.5" y="7" width="40" height="6"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-uD-nze">
+                                        <rect key="frame" x="167.5" y="19" width="40" height="6"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="6" id="3cF-Jt-Xjm"/>
@@ -244,11 +244,15 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="LaX-uD-nze" firstAttribute="centerY" secondItem="San-RW-LNc" secondAttribute="centerY" id="Acp-DR-cEU"/>
                                     <constraint firstItem="LaX-uD-nze" firstAttribute="centerX" secondItem="San-RW-LNc" secondAttribute="centerX" id="McJ-1g-SaE"/>
-                                    <constraint firstAttribute="height" constant="20" id="uvH-9b-deX"/>
+                                    <constraint firstAttribute="height" constant="44" id="uvH-9b-deX"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Iwo-xj-mMZ" appends="YES" id="HZJ-zg-l9c"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,6 +272,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUQ-ng-p11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Iwo-xj-mMZ">
+                    <connections>
+                        <action selector="collapseMap:" destination="lmM-3w-noh" id="4F7-tl-DqY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1557.5999999999999" y="1163.568215892054"/>
         </scene>

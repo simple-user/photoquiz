@@ -79,6 +79,14 @@ class MapViewController: UIViewController {
             return MKCoordinateRegion(center: center, span: span)
         }
     }
+    
+    @IBAction func collapseMap(_ sender: Any) {
+        
+        if let drawer = self.parent as? PulleyViewController {
+            drawer.setDrawerPosition(position: .collapsed)
+        }
+    }
+    
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -133,6 +141,7 @@ extension MapViewController: MKMapViewDelegate {
 
     }
 
+    
 }
 
 extension MapViewController: PulleyDrawerViewControllerDelegate {
