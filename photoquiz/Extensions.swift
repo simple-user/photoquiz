@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 extension MutableCollection where Index == Int {
     /// Shuffle the elements of `self` in-place.
@@ -30,4 +32,13 @@ extension Collection {
         list.shuffle()
         return list
     }
+}
+
+extension UIImage {
+    var uncompressedPNGData: Data?      { return UIImagePNGRepresentation(self)        }
+    var highestQualityJPEGNSData: Data? { return UIImageJPEGRepresentation(self, 1.0)  }
+    var highQualityJPEGNSData: Data?    { return UIImageJPEGRepresentation(self, 0.75) }
+    var mediumQualityJPEGNSData: Data?  { return UIImageJPEGRepresentation(self, 0.5)  }
+    var lowQualityJPEGNSData: Data?     { return UIImageJPEGRepresentation(self, 0.25) }
+    var lowestQualityJPEGNSData:Data?   { return UIImageJPEGRepresentation(self, 0.0)  }
 }

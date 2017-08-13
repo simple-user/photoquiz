@@ -138,7 +138,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: PulleyDrawerViewControllerDelegate {
     
     func partialRevealDrawerHeight() -> CGFloat {
-        return 100
+        return 0
     }
     
     func supportedDrawerPositions() -> [PulleyPosition] {
@@ -153,7 +153,7 @@ extension MapViewController: PulleyDrawerViewControllerDelegate {
 extension MapViewController: PulleyPrimaryContentControllerDelegate {
 
     func drawerPositionDidChange(drawer: PulleyViewController) {
-        if drawer.drawerPosition == .collapsed {
+        if drawer.drawerPosition == .collapsed || drawer.drawerPosition == .closed {
             self.rivneMapView.setRegion(self.stockRegion, animated: false)
         }
     }
