@@ -185,9 +185,9 @@ class ViewController: UIViewController {
         spb?.skip()
     }
     
-    func hideUI() {
+    func hideUI(reset: Bool = false) {
         
-        let toHide = topGradient.isHidden == false
+        let toHide = reset == false ? topGradient.isHidden == false : false
         
         self.guessButton.isHidden = toHide
         self.topGradient.isHidden = toHide
@@ -314,7 +314,7 @@ extension ViewController: UIScrollViewDelegate {
         guessedLabel.isHidden = true
         guessButton.isHidden = true
         guessButtonImage.isHidden = true
-
+        hideUI(reset: true)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
