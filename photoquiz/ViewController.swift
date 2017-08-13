@@ -314,7 +314,6 @@ extension ViewController: UIScrollViewDelegate {
         guessedLabel.isHidden = true
         guessButton.isHidden = true
         guessButtonImage.isHidden = true
-        hideUI(reset: true)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -336,6 +335,7 @@ extension ViewController: UIScrollViewDelegate {
             }
             currentIndex = index
         }
+//        hideUI(reset: true)
         
     }
 }
