@@ -50,10 +50,6 @@
                                     <constraint firstAttribute="height" constant="89" id="3ir-Tz-QZQ"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Hc-4Nd">
-                                <rect key="frame" x="177.5" y="150" width="20" height="20"/>
-                                <color key="color" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-aP-OKe" userLabel="guess">
                                 <rect key="frame" x="97.5" y="250.5" width="180" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -114,16 +110,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="scZ-tO-ezg" secondAttribute="trailing" id="04f-QX-nK9"/>
                             <constraint firstItem="p9c-mU-vCj" firstAttribute="centerX" secondItem="26G-LX-idX" secondAttribute="centerX" id="CE2-Q9-2t4"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="centerX" secondItem="hXV-Er-35f" secondAttribute="centerX" id="FG4-eL-H5e"/>
                             <constraint firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oho-8l-Euv"/>
-                            <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S3s-0B-W64"/>
                             <constraint firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Sod-6J-I6m"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Spk-i7-mT8"/>
-                            <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TVn-br-1a4"/>
                             <constraint firstItem="hXV-Er-35f" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="5" id="Tye-he-8nD"/>
                             <constraint firstItem="26G-LX-idX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UUW-BV-OWt"/>
                             <constraint firstAttribute="trailing" secondItem="rAF-tZ-VY0" secondAttribute="trailing" id="V2Q-DB-WIw"/>
@@ -146,7 +140,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="G51-Hc-4Nd" id="eyI-NK-8bh"/>
                         <outlet property="bottomGradient" destination="26G-LX-idX" id="cvg-fr-G2i"/>
                         <outlet property="collectionView" destination="rAF-tZ-VY0" id="cX3-dV-lIy"/>
                         <outlet property="guessButton" destination="8WK-aP-OKe" id="NS2-Go-Yoj"/>

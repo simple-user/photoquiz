@@ -13,7 +13,7 @@ import Pulley
 import Presentr
 import StepProgressBar
 import Kingfisher
-
+import NVActivityIndicatorView
 
 class ViewController: UIViewController {
 
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stepPB: StepProgressBar!
     @IBOutlet weak var guessButtonImage: UIImageView!
     @IBOutlet weak var bottomGradient: UIImageView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    var activityIndicator: NVActivityIndicatorView!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var guessButton: UIButton!
     @IBOutlet var topGradient: UIImageView!
@@ -72,6 +72,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
+
+        let size = CGSize(width: 100, height: 100)
+        let origin = CGPoint(x: self.view.center.x - (size.width / 2),
+                             y: self.view.center.y - (size.height) / 2)
+        self.activityIndicator = NVActivityIndicatorView(frame: CGRect(origin: origin, size: size),
+                                               type: NVActivityIndicatorType.pacman,
+                                               color: UIColor.red /* UIColor(red: 57.0 / 255.0, green: 97.0 / 255.0, blue: 45.0 / 255.0, alpha: 1.0) */ )
+        self.view.addSubview(activityIndicator)
+
 
         self.activityIndicator.startAnimating()
         self.collectionView.alpha = 0.0
@@ -88,7 +97,6 @@ class ViewController: UIViewController {
                 // here ready to go! :)
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
-//                self.setupProgressBar(photosCount: self.currentModels.count)
 
                 UIView.animate(withDuration: 0.5, animations: {
                     self.collectionView.alpha = 1.0
