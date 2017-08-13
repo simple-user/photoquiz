@@ -11,6 +11,7 @@ import Firebase
 import SwiftyJSON
 import Pulley
 import Presentr
+import StepProgressBar
 
 
 class ViewController: UIViewController {
@@ -19,13 +20,21 @@ class ViewController: UIViewController {
     var storage: Storage!
 
     // selected models
-    var currentModels = [PhotoDBModel]()
+    var currentModels = [PhotoDBModel]() {
+        didSet {
+            stepPB?.stepsCount = currentModels.count
+        }
+    }
     // three images prepared to show
     var currentImages = [UIImage]()
     var currentImage = #imageLiteral(resourceName: "noimage")
     var previousImage: UIImage?
     var nextImage: UIImage?
-    var currentIndex: Int = 0
+    var currentIndex: Int = 0 {
+        didSet {
+            stepPB?.progress = currentIndex + 1
+        }
+    }
     var rightAnswers = 0
     var spb: SegmentedProgressBar?
     let infoController = InfoViewController()
@@ -50,6 +59,7 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var stepPB: StepProgressBar!
     @IBOutlet weak var guessButtonImage: UIImageView!
     @IBOutlet weak var bottomGradient: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -67,6 +77,7 @@ class ViewController: UIViewController {
         self.topGradient.alpha = 0.0
         guessButtonImage.alpha = 0.0
         bottomGradient.alpha = 0.0
+        stepPB?.alpha = 0.0
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -75,7 +86,7 @@ class ViewController: UIViewController {
                 // here ready to go! :)
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
-                self.setupProgressBar(photosCount: self.currentModels.count)
+//                self.setupProgressBar(photosCount: self.currentModels.count)
 
                 UIView.animate(withDuration: 0.5, animations: {
                     self.collectionView.alpha = 1.0
@@ -83,13 +94,14 @@ class ViewController: UIViewController {
                     self.topGradient.alpha = 1.0
                     self.guessButtonImage.alpha = 1.0
                     self.bottomGradient.alpha = 1.0
+                    self.stepPB?.alpha = 0.75
                 }, completion: { _ in
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
                     self.topGradient.alpha = 1.0
                     self.guessButtonImage.alpha = 1.0
                     self.bottomGradient.alpha = 1.0
-
+                    self.stepPB?.alpha = 0.75
                 })
             }
         }

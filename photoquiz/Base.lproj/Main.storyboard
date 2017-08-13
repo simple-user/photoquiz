@@ -72,6 +72,33 @@
                                     <constraint firstAttribute="height" constant="60" id="kIZ-ft-BUM"/>
                                 </constraints>
                             </imageView>
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vr1-ra-iMS" customClass="StepProgressBar" customModule="StepProgressBar">
+                                <rect key="frame" x="36" y="10" width="303" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="oT0-OF-dEJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stepsCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stepsOffset">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -89,12 +116,15 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="26G-LX-idX" secondAttribute="bottom" id="XII-pl-N3P"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="height" secondItem="hXV-Er-35f" secondAttribute="height" id="XQj-1K-KwP"/>
                             <constraint firstItem="hXV-Er-35f" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="10" id="YQb-TA-esI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vr1-ra-iMS" secondAttribute="trailing" constant="20" id="Z1k-Lt-geL"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bY3-aU-ThG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAF-tZ-VY0" secondAttribute="bottom" id="cCx-fM-AWF"/>
                             <constraint firstItem="hXV-Er-35f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cKs-gI-BH4"/>
+                            <constraint firstItem="Vr1-ra-iMS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="cYA-Kj-3rV"/>
                             <constraint firstItem="scZ-tO-ezg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fCi-GT-c93"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="centerY" secondItem="hXV-Er-35f" secondAttribute="centerY" constant="-5" id="gNu-k3-a1a"/>
                             <constraint firstAttribute="trailing" secondItem="26G-LX-idX" secondAttribute="trailing" id="n3v-G1-aBL"/>
+                            <constraint firstItem="Vr1-ra-iMS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="pCn-Zq-PFR"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="width" secondItem="hXV-Er-35f" secondAttribute="width" id="xMc-B7-mrl"/>
                         </constraints>
                     </view>
@@ -105,6 +135,7 @@
                         <outlet property="collectionView" destination="rAF-tZ-VY0" id="cX3-dV-lIy"/>
                         <outlet property="guessButton" destination="8WK-aP-OKe" id="NS2-Go-Yoj"/>
                         <outlet property="guessButtonImage" destination="hXV-Er-35f" id="78j-6p-GhF"/>
+                        <outlet property="stepPB" destination="Vr1-ra-iMS" id="Iw1-Me-93x"/>
                         <outlet property="topGradient" destination="scZ-tO-ezg" id="o9P-wn-dTr"/>
                         <segue destination="lmM-3w-noh" kind="show" identifier="toMap" id="HiL-Y5-Ddh"/>
                     </connections>

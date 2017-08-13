@@ -11,5 +11,6 @@ target 'photoquiz' do
   pod 'Firebase/Storage'
   pod 'Pulley'
   pod 'Presentr', '~> 1.2'
+  pod 'StepProgressBar'
   
 end
