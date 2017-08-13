@@ -167,6 +167,8 @@ class ViewController: UIViewController {
             }
         
             customPresentViewController(presenter, viewController: infoController, animated: true, completion: nil)
+
+            return
         }
 
 
