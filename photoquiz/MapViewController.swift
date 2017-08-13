@@ -24,7 +24,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.centerMapOnLocation()
-
+        self.infoController.onButtinComletion = {
+            self.collapseMap(self)
+            self.successCallback?()
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -39,18 +42,14 @@ class MapViewController: UIViewController {
                                                      span: MKCoordinateSpan(latitudeDelta: 0.17014498714487303,
                                                                             longitudeDelta: 0.1868872709158893))
 
-    let controllerForPresenter = InfoViewController()
+    let infoController = InfoViewController()
     fileprivate let presenter: Presentr = {
-//        let width = ModalSize.full
-//        let height = ModalSize.fluid(percentage: 0.20)
-//        let center = ModalCenterPosition.customOrigin(origin: CGPoint(x: 0, y: 0))
-//        let customType = PresentationType.custom(width: width, height: height, center: center)
 
         let customPresenter = Presentr(presentationType: .alert)
-        customPresenter.transitionType = .coverVerticalFromTop
+        customPresenter.transitionType = TransitionType.coverVertical
         customPresenter.dismissTransitionType = .crossDissolve
         customPresenter.roundCorners = false
-        customPresenter.backgroundColor = .green
+        customPresenter.backgroundColor = .black
         customPresenter.backgroundOpacity = 0.5
         customPresenter.dismissOnSwipe = true
         customPresenter.dismissOnSwipeDirection = .top
@@ -132,8 +131,6 @@ extension MapViewController: MKMapViewDelegate {
     // change point in to red after select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 
-        customPresentViewController(self.presenter, viewController: self.controllerForPresenter, animated: true, completion: nil)
-
         guard let pin = view.annotation as? PhotoPoint else { return }
         if self.tappedPoints.contains(where: { point -> Bool in
             point.id == pin.id
@@ -143,15 +140,16 @@ extension MapViewController: MKMapViewDelegate {
         }
         if pin.isTruePoint {
             self.setImage(#imageLiteral(resourceName: "TruePin"), forView: view)
-
-            // collapseMap(self)
-            // successCallback?()
-            return
+            self.infoController.isTrueAnswer = true
         }
         else {
+            self.infoController.isTrueAnswer = false
             self.setImage(#imageLiteral(resourceName: "WrongPin"), forView: view)
         }
         self.tappedPoints.insert(pin)
+
+        customPresentViewController(self.presenter, viewController: self.infoController, animated: true, completion: nil)
+
     }
 
     // func to set image for ping (with size correction)

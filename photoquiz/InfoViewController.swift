@@ -10,26 +10,34 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var onButtinComletion: (() -> Void)?
+    var isTrueAnswer: Bool = false
 
-        // Do any additional setup after loading the view.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var frame = self.view.frame
+        frame.origin = CGPoint(x: 24.0, y: 183.0)
+        self.view.frame = frame
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.imageView.image = isTrueAnswer ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "sad")
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBOutlet var contentView: UIView! {
+        didSet {
+            self.contentView.layer.cornerRadius = 16.0
+        }
     }
-    */
+
+
+    @IBOutlet var imageView: UIImageView!
+    @IBAction func onButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        if isTrueAnswer {
+            self.onButtinComletion?()
+        }
+    }
 
 }
