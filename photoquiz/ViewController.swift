@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     }
 
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
-        self.currentModels = getRandomModels(dummyCount: 5)
+        self.currentModels = getRandomModels(dummyCount: 5, trueModel: nil)
         self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
 
         let imagesCount = min(self.currentModels.count, 2)
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
         if let drawer = self.parent as? PulleyViewController
         {
-            let dummyPoints = self.getRandomModels(dummyCount: 4)
+            let dummyPoints = self.getRandomModels(dummyCount: 4, trueModel: trueModel)
 
             var resultPoints = convertModelsToPoints(models: dummyPoints)
             resultPoints.append(PhotoPoint(pointId: trueModel.id,
@@ -104,21 +104,27 @@ class ViewController: UIViewController {
         }
     }
 
-    private func getRandomModels(dummyCount: Int = 5) -> [PhotoDBModel] {
+    // need true model not to take the same dummy model 
+    private func getRandomModels(dummyCount: Int = 5, trueModel: PhotoDBModel?) -> [PhotoDBModel] {
 
-        let randomModels = models.shuffled()
-        
-        if dummyCount >= models.count {
-            return randomModels
+        var resultModels = [PhotoDBModel]()
+
+        for model in models.shuffled() {
+            if trueModel == nil || model.id != trueModel!.id {
+                resultModels.append(model)
+
+                if resultModels.count == dummyCount {
+                    break
+                }
+            }
         }
-        else {
-            return Array(randomModels[0 ..< dummyCount])
-        }
+
+        return resultModels
     }
     
     private func convertModelsToPoints(models: [PhotoDBModel]) -> [PhotoPoint] {
         guard models.first != nil else { return [] }
-        let points = models[1..<models.count].map {
+        let points = models.map {
             PhotoPoint(pointId: $0.id, location: $0.location)
         }
         return points
