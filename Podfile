@@ -12,5 +12,6 @@ target 'photoquiz' do
   pod 'Pulley'
   pod 'Presentr', '~> 1.2'
   pod 'StepProgressBar'
+  pod 'Kingfisher', '~> 3.10'
   
 end

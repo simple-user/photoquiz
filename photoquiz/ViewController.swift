@@ -12,6 +12,7 @@ import SwiftyJSON
 import Pulley
 import Presentr
 import StepProgressBar
+import Kingfisher
 
 
 class ViewController: UIViewController {
@@ -51,7 +52,6 @@ class ViewController: UIViewController {
         return customPresenter
     }()
 
-    
     // all points from db
     var models = [PhotoDBModel]() {
         didSet {
@@ -226,7 +226,17 @@ class ViewController: UIViewController {
     }
     
     private func getPhoto(fromModel model: PhotoDBModel, completion: @escaping (UIImage) -> Void) {
-        
+
+
+        if ImageCache.default.isImageCached(forKey: model.id).cached {
+            let image = ImageCache.default.retrieveImageInDiskCache(forKey: model.id)
+
+            if let image = image {
+                completion(image)
+                return
+            }
+        }
+
         let gsReference = storage.reference(forURL: model.path)
         gsReference.getData(maxSize: 3 * 1024 * 1024) { data, error in
             if let error = error {
@@ -235,7 +245,9 @@ class ViewController: UIViewController {
                 completion(#imageLiteral(resourceName: "noimage"))
             } else {
                 // Data for "images/island.jpg" is returned
-                completion(UIImage(data: data!) ?? #imageLiteral(resourceName: "noimage"))
+                let image = UIImage(data: data!) ?? #imageLiteral(resourceName: "noimage")
+                ImageCache.default.store(image, forKey: model.id)
+                completion(image)
             }
         }
     }

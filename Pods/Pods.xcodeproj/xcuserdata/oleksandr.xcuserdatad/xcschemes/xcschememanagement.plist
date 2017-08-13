@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-photoquiz.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -25,6 +30,11 @@
 			<false/>
 		</dict>
 		<key>Pulley.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>StepProgressBar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,27 +67,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>078920D02D11E83AB59C991BEA8BD86E</key>
+		<key>065CC31F2E819DD44F2609E06BF5C010</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>180820D54BEC2ABCC732CC8F68A14031</key>
+		<key>184CC6EB0D9F1C3461AE11C495849FB1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B611F2B53DD8ED32222780E8921BB1C</key>
+		<key>2F0C0F810568D3E82219429D9D870F04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D0EDE060B4D641BC5C1107029950796</key>
+		<key>5F3F85484BD654762BA5ABE9377E79F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AF3EE36E487FDFD30BE663A857344F6F</key>
+		<key>7683C245D7E3764E969051388E99AC5B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5ED0AC5B9BB7B8ACC7E5E465D247152</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE78D5C8F515324CD1CB09D137F75CB4</key>
+		<key>D47650A6FC87115A3E98292673A4961C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D698574B8E469EBF1A64E3E748616AAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
