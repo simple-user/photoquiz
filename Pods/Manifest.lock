@@ -32,7 +32,8 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Pulley (1.4)
+  - Presentr (1.2.3)
+  - Pulley (1.5.1)
   - SwiftIcons (1.5.1)
   - SwiftyJSON (3.1.4)
 
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - Presentr (~> 1.2)
   - Pulley
   - SwiftIcons (~> 1.5)
   - SwiftyJSON (~> 3.1)
@@ -54,10 +56,11 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Pulley: 3d47a5ca819b8f35a63e9a4811d35035d484d1d9
+  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
+  Pulley: 31ea6b7e5704700f1c9e51ed6b0a49a773e2bfab
   SwiftIcons: 287593643898af5a9ef16be4b1f9cf91a436cbc7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 998a80934037f2ce9fd76c4ae16c1a1ee18f11ac
+PODFILE CHECKSUM: fc8dad6ee2b4cb78c1ee20c24f949499fc62d203
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

@@ -10,5 +10,6 @@ target 'photoquiz' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Pulley'
+  pod 'Presentr', '~> 1.2'
   
 end
