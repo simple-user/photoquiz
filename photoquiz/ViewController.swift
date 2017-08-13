@@ -83,6 +83,11 @@ class ViewController: UIViewController {
         self.parent?.dismiss(animated: true, completion: nil)
     }
     
+    func showNextImage() {
+
+        // Here we have to scroll right
+    }
+    
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
         if let drawer = self.parent as? PulleyViewController
         {
@@ -93,6 +98,7 @@ class ViewController: UIViewController {
                                            location: trueModel.location,
                                            isTruePoint: true))
             let mvc = drawer.drawerContentViewController as! MapViewController
+            mvc.successCallback = showNextImage
             mvc.setPoints(points: resultPoints)
             drawer.setDrawerPosition(position: .open)
         }

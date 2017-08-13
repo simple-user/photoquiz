@@ -19,6 +19,8 @@ class MapViewController: UIViewController {
         self.centerMapOnLocation()
     }
 
+    var successCallback: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.centerMapOnLocation()
@@ -118,7 +120,8 @@ extension MapViewController: MKMapViewDelegate {
         }
         if pin.isTruePoint {
             self.setImage(#imageLiteral(resourceName: "TruePin"), forView: view)
-            self.navigationController?.popViewController(animated: true)
+            collapseMap(self)
+            successCallback?()
             return
         }
         else {
