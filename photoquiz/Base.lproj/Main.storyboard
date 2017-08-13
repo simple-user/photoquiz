@@ -53,17 +53,6 @@
                                 <rect key="frame" x="177.5" y="150" width="20" height="20"/>
                                 <color key="color" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-aP-OKe" userLabel="guess">
-                                <rect key="frame" x="97.5" y="235" width="180" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Відгадати">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onGuess" destination="BYZ-38-t0r" eventType="touchUpInside" id="RZ0-ay-bQg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zl-kg-a55">
                                 <rect key="frame" x="20" y="20" width="39" height="30"/>
                                 <state key="normal" title="Menu"/>
@@ -71,19 +60,37 @@
                                     <action selector="backToMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Duy-cP-h7d"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Відгадати" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DN7-GU-A27">
+                                <rect key="frame" x="97.5" y="255.5" width="180" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle2" translatesAutoresizingMaskIntoConstraints="NO" id="hXV-Er-35f">
-                                <rect key="frame" x="97.5" y="240" width="180" height="60"/>
+                                <rect key="frame" x="97.5" y="255.5" width="180" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="dIa-fC-Luc"/>
                                     <constraint firstAttribute="height" constant="60" id="kIZ-ft-BUM"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-aP-OKe" userLabel="guess">
+                                <rect key="frame" x="97" y="255" width="180" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onGuess" destination="BYZ-38-t0r" eventType="touchUpInside" id="RZ0-ay-bQg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="scZ-tO-ezg" secondAttribute="trailing" id="04f-QX-nK9"/>
+                            <constraint firstItem="DN7-GU-A27" firstAttribute="top" secondItem="hXV-Er-35f" secondAttribute="top" id="4oE-NE-PCd"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="centerX" secondItem="hXV-Er-35f" secondAttribute="centerX" id="FG4-eL-H5e"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hXV-Er-35f" secondAttribute="bottom" constant="20" id="H7P-8W-BR8"/>
+                            <constraint firstItem="DN7-GU-A27" firstAttribute="leading" secondItem="hXV-Er-35f" secondAttribute="leading" id="M3B-w4-ZPT"/>
                             <constraint firstItem="4Zl-kg-a55" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oho-8l-Euv"/>
                             <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S3s-0B-W64"/>
                             <constraint firstItem="4Zl-kg-a55" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Sod-6J-I6m"/>
@@ -94,12 +101,15 @@
                             <constraint firstItem="scZ-tO-ezg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W8m-3w-hnY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="26G-LX-idX" secondAttribute="bottom" id="XII-pl-N3P"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="height" secondItem="hXV-Er-35f" secondAttribute="height" id="XQj-1K-KwP"/>
+                            <constraint firstItem="DN7-GU-A27" firstAttribute="trailing" secondItem="hXV-Er-35f" secondAttribute="trailing" id="Xeh-op-e92"/>
+                            <constraint firstItem="hXV-Er-35f" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="10" id="YQb-TA-esI"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bY3-aU-ThG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAF-tZ-VY0" secondAttribute="bottom" id="cCx-fM-AWF"/>
                             <constraint firstItem="hXV-Er-35f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cKs-gI-BH4"/>
                             <constraint firstItem="scZ-tO-ezg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fCi-GT-c93"/>
-                            <constraint firstItem="8WK-aP-OKe" firstAttribute="centerY" secondItem="hXV-Er-35f" secondAttribute="centerY" constant="-5" id="gNu-k3-a1a"/>
+                            <constraint firstItem="8WK-aP-OKe" firstAttribute="centerY" secondItem="hXV-Er-35f" secondAttribute="centerY" id="gNu-k3-a1a"/>
                             <constraint firstAttribute="trailing" secondItem="26G-LX-idX" secondAttribute="trailing" id="n3v-G1-aBL"/>
+                            <constraint firstItem="DN7-GU-A27" firstAttribute="bottom" secondItem="hXV-Er-35f" secondAttribute="bottom" constant="-8" id="rJT-jJ-HUS"/>
                             <constraint firstItem="8WK-aP-OKe" firstAttribute="width" secondItem="hXV-Er-35f" secondAttribute="width" id="xMc-B7-mrl"/>
                         </constraints>
                     </view>
