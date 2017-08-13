@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A4360E05BCFCB87FBEB5C6DF5E1D9050'
-               BlueprintName = 'Pulley'
+               BlueprintIdentifier = '31083F053A7A3455A0E8D205438A0CC8'
+               BlueprintName = 'StepProgressBar'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pulley.framework'>
+               BuildableName = 'StepProgressBar.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
