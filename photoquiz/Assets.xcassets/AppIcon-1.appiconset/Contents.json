@@ -1,70 +1,68 @@
 {
   "images" : [
     {
-      "size" : "Small",
       "idiom" : "iphone",
-      "filename" : "icon-Small.png",
-      "scale" : "1x"
-    },
-    {
-      "size" : "",
-      "idiom" : "iphone",
-      "filename" : "icon.png",
-      "scale" : "1x"
-    },
-    {
-      "size" : "60",
-      "idiom" : "iphone",
-      "filename" : "icon-60@2x.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
-      "size" : "Small-40",
       "idiom" : "iphone",
-      "filename" : "icon-Small-40@3x.png",
+      "size" : "20x20",
       "scale" : "3x"
     },
     {
-      "size" : "60",
-      "idiom" : "iphone",
-      "filename" : "icon-60@3x.png",
-      "scale" : "3x"
-    },
-    {
-      "size" : "Small",
+      "size" : "29x29",
       "idiom" : "iphone",
       "filename" : "icon-Small.png",
       "scale" : "1x"
     },
     {
-      "size" : "Small",
+      "size" : "29x29",
       "idiom" : "iphone",
       "filename" : "icon-Small@2x.png",
       "scale" : "2x"
     },
     {
-      "size" : "Small",
+      "size" : "29x29",
       "idiom" : "iphone",
       "filename" : "icon-Small@3x.png",
       "scale" : "3x"
     },
     {
-      "size" : "Small-40",
+      "size" : "40x40",
       "idiom" : "iphone",
       "filename" : "icon-Small-40@2x.png",
       "scale" : "2x"
     },
     {
-      "size" : "2x",
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "icon-Small-40@3x.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "57x57",
+      "idiom" : "iphone",
+      "filename" : "icon.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "57x57",
       "idiom" : "iphone",
       "filename" : "icon@2x.png",
       "scale" : "2x"
     },
     {
-      "size" : "Small",
+      "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "icon-Small@2x.png",
+      "filename" : "icon-60@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "icon-60@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

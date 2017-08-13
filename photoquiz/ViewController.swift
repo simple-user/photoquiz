@@ -185,6 +185,16 @@ class ViewController: UIViewController {
         spb?.skip()
     }
     
+    func hideUI() {
+        
+        let toHide = topGradient.isHidden == false
+        
+        self.guessButton.isHidden = toHide
+        self.topGradient.isHidden = toHide
+        self.guessButtonImage.isHidden = toHide
+        self.bottomGradient.isHidden = toHide
+    }
+    
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
         if let drawer = self.parent as? PulleyViewController
         {
@@ -277,12 +287,23 @@ extension ViewController: UICollectionViewDataSource {
         let image = self.currentImages[indexPath.section]
         view.imageView.image = image
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideUI))
+        view.addGestureRecognizer(tapRecognizer)
+        
         return view
     }
 }
 
 
 extension ViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+
+        guessedLabel.isHidden = true
+        guessButton.isHidden = true
+        guessButtonImage.isHidden = true
+
+    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
