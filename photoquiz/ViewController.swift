@@ -147,7 +147,7 @@ class ViewController: UIViewController {
 
     func showNextImage() {
 
-        self.rightAnswers += 5
+        self.rightAnswers += 1
         if self.rightAnswers == self.currentModels.count {
             // end of the round
             self.infoController.dismissCompletion = {

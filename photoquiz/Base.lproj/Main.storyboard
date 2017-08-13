@@ -131,7 +131,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-1m-WsO">
                                         <rect key="frame" x="0.0" y="0.0" width="222" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
-                                        <state key="normal" title="Play"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" red="0.52047842741012573" green="0.56132751703262329" blue="0.54074519872665405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="zXA-fn-J4N" kind="show" id="jOV-Gl-SOi"/>
                                         </connections>
@@ -139,7 +141,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgI-hP-6s5">
                                         <rect key="frame" x="0.0" y="78" width="222" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
-                                        <state key="normal" title="Add Content"/>
+                                        <state key="normal" title="Add Content">
+                                            <color key="titleColor" red="0.52047842741012573" green="0.56132751703262329" blue="0.54074519872665405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="takePhoto:" destination="QJc-Ia-Gvq" eventType="touchUpInside" id="BEO-fq-TzC"/>
                                         </connections>
