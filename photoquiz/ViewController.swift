@@ -36,13 +36,18 @@ class ViewController: UIViewController {
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var guessButton: UIButton!
+    @IBOutlet var topGradient: UIImageView!
 
     override func viewDidLoad() {
         
         self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
 
         self.activityIndicator.startAnimating()
-        self.collectionView.isHidden = true
+        self.collectionView.alpha = 0.0
+        self.guessButton.alpha = 0.0
+        self.topGradient.alpha = 0.0
+
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -51,9 +56,17 @@ class ViewController: UIViewController {
                 // here ready to go! :)
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
-                self.collectionView.isHidden = false
                 self.setupProgressBar(photosCount: self.currentModels.count)
-                print("vse ok")
+
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.collectionView.alpha = 1.0
+                    self.guessButton.alpha = 1.0
+                    self.topGradient.alpha = 1.0
+                }, completion: { _ in
+                    self.collectionView.alpha = 1.0
+                    self.guessButton.alpha = 1.0
+                    self.topGradient.alpha = 1.0
+                })
             }
         }
     }
@@ -70,7 +83,7 @@ class ViewController: UIViewController {
 
         spb?.removeFromSuperview()
         
-        spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 5)
+        spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 120)
         spb?.frame = CGRect(x: 15, y: 28, width: view.frame.width - 30, height: 2)
         spb?.delegate = self
         spb?.topColor = UIColor.white
@@ -85,28 +98,27 @@ class ViewController: UIViewController {
         self.currentModels = getRandomModels(dummyCount: 5, trueModel: nil)
         self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
 
-        let imagesCount = min(self.currentModels.count, 2)
-        var imagesLoaded = 0
         for index in 0 ..< self.currentModels.count {
             getPhoto(fromModel: self.currentModels[index], completion: { image in
 
                 self.currentImages[index] = image
-                if index == 0 || index == 1 {
-                    imagesLoaded += 1
-                }
-
-                if imagesLoaded == imagesCount {
+                if index == 0 {
                     DispatchQueue.main.async {
                         print("readyToGo()")
                         readyToGo()
                     }
                 }
+
             })
         }
     }
 
     @IBAction func backToMenu(_ sender: Any) {
         self.parent?.dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction func onGuess() {
+        self.onShowMap(trueModel: currentModels[currentIndex])
     }
     
     func showNextImage() {
@@ -197,14 +209,6 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: PhotoCollectionViewCellDelegate {
-    func onGuess(sender: UICollectionViewCell) {
-        guard let section = self.collectionView.indexPath(for: sender)?.section,
-            section < currentModels.count else { return }
-        self.onShowMap(trueModel: currentModels[section])
-    }
-}
-
 extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -220,7 +224,7 @@ extension ViewController: UICollectionViewDataSource {
             as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         let image = self.currentImages[indexPath.section]
         view.imageView.image = image
-        view.delegate = self
+        
 
         return view
     }

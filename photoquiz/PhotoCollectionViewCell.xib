@@ -24,20 +24,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fRa-YS-oFq">
                                 <rect key="frame" x="0.0" y="0.0" width="245" height="335"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmA-Wi-kVv">
-                                <rect key="frame" x="88" y="297" width="69" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Guess me"/>
-                                <connections>
-                                    <action selector="onGuess" destination="gTV-IL-0wX" eventType="touchUpInside" id="sAJ-gz-hUU"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fRa-YS-oFq" secondAttribute="trailing" id="BB4-W7-gqp"/>
-                            <constraint firstItem="cmA-Wi-kVv" firstAttribute="centerX" secondItem="3wG-7M-97h" secondAttribute="centerX" id="Gjd-j2-wgf"/>
-                            <constraint firstAttribute="bottom" secondItem="cmA-Wi-kVv" secondAttribute="bottom" constant="8" id="KdN-5v-6ve"/>
                             <constraint firstAttribute="bottom" secondItem="fRa-YS-oFq" secondAttribute="bottom" id="PwI-dv-uxg"/>
                             <constraint firstItem="fRa-YS-oFq" firstAttribute="leading" secondItem="3wG-7M-97h" secondAttribute="leading" id="f4N-JV-df8"/>
                             <constraint firstItem="fRa-YS-oFq" firstAttribute="top" secondItem="3wG-7M-97h" secondAttribute="top" id="m3f-7u-ZrE"/>
@@ -53,7 +43,6 @@
             </constraints>
             <size key="customSize" width="245" height="335"/>
             <connections>
-                <outlet property="guessButton" destination="cmA-Wi-kVv" id="Enn-j5-5x0"/>
                 <outlet property="imageView" destination="fRa-YS-oFq" id="xy0-WF-xLB"/>
             </connections>
             <point key="canvasLocation" x="180" y="57"/>
