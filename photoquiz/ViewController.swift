@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     var previousImage: UIImage?
     var nextImage: UIImage?
     var currentIndex: Int = 0
-    var spb: SegmentedProgressBar!
+    var spb: SegmentedProgressBar?
     
     // all points from db
     var models = [PhotoDBModel]() {
@@ -80,16 +80,18 @@ class ViewController: UIViewController {
     }
     
     func setupProgressBar(photosCount: Int) {
+
+        spb?.removeFromSuperview()
         
         spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 5)
-        spb.frame = CGRect(x: 15, y: 28, width: view.frame.width - 30, height: 2)
-        spb.delegate = self
-        spb.topColor = UIColor.white
-        spb.bottomColor = UIColor.white.withAlphaComponent(0.25)
-        spb.padding = 2
-        self.view.addSubview(spb)
+        spb?.frame = CGRect(x: 15, y: 28, width: view.frame.width - 30, height: 2)
+        spb?.delegate = self
+        spb?.topColor = UIColor.white
+        spb?.bottomColor = UIColor.white.withAlphaComponent(0.25)
+        spb?.padding = 2
+        self.view.addSubview(spb!)
         
-        spb.startAnimation()
+        spb?.startAnimation()
     }
 
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
@@ -122,6 +124,13 @@ class ViewController: UIViewController {
     func showNextImage() {
 
         // Here we have to scroll right
+        currentIndex += 1
+        if currentIndex >= currentModels.count {
+            currentIndex = 0
+        }
+        let newIndexPath = IndexPath(row: 0, section: currentIndex)
+        collectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
+        spb?.skip()
     }
     
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
@@ -137,6 +146,7 @@ class ViewController: UIViewController {
             mvc.successCallback = showNextImage
             mvc.setPoints(points: resultPoints)
             drawer.setDrawerPosition(position: .open)
+            spb?.isPaused = true
         }
     }
 
@@ -228,10 +238,10 @@ extension ViewController: UIScrollViewDelegate {
         let currentIndexPathes = collectionView.indexPathsForVisibleItems
         if let index = currentIndexPathes.first?.section {
             if index < currentIndex {
-                spb.rewind()
+                spb?.rewind()
             }
             else if index > currentIndex {
-                spb.skip()
+                spb?.skip()
             }
             currentIndex = index
         }
@@ -250,7 +260,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: SegmentedProgressBarDelegate {
 
     func segmentedProgressBarChangedIndex(index: Int) {
-    
+        currentIndex = index
+        let newIndexPath = IndexPath(row: 0, section: index)
+        collectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
     }
     
     func segmentedProgressBarFinished() {
@@ -259,5 +271,14 @@ extension ViewController: SegmentedProgressBarDelegate {
 
 }
 
+
+extension ViewController: PulleyPrimaryContentControllerDelegate {
+    
+    func drawerPositionDidChange(drawer: PulleyViewController) {
+        if drawer.drawerPosition == .collapsed || drawer.drawerPosition == .closed {
+            spb?.isPaused = false
+        }
+    }
+}
 
 
