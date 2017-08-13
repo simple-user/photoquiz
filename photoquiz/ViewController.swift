@@ -26,6 +26,7 @@ class ViewController: UIViewController {
             stepPB?.stepsCount = currentModels.count
         }
     }
+    var guessedIndexes = [Int]()
     // three images prepared to show
     var currentImages = [UIImage]()
     var currentImage = #imageLiteral(resourceName: "noimage")
@@ -59,6 +60,7 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var guessedLabel: UIStackView!
     @IBOutlet weak var stepPB: StepProgressBar!
     @IBOutlet weak var guessButtonImage: UIImageView!
     @IBOutlet weak var bottomGradient: UIImageView!
@@ -159,6 +161,7 @@ class ViewController: UIViewController {
 
     func showNextImage() {
 
+        guessedIndexes.append(currentIndex)
         self.rightAnswers += 1
         if self.rightAnswers == self.currentModels.count {
             // end of the round
@@ -286,7 +289,6 @@ extension ViewController: UICollectionViewDataSource {
         let image = self.currentImages[indexPath.section]
         view.imageView.image = image
         
-
         return view
     }
 }
@@ -298,6 +300,13 @@ extension ViewController: UIScrollViewDelegate {
         
         let currentIndexPathes = collectionView.indexPathsForVisibleItems
         if let index = currentIndexPathes.first?.section {
+            
+            let isCurrentPhotoAlreadyGuessed = guessedIndexes.contains(index)
+            guessedLabel.isHidden = isCurrentPhotoAlreadyGuessed == false
+            guessButton.isHidden = isCurrentPhotoAlreadyGuessed
+            guessButtonImage.isHidden = isCurrentPhotoAlreadyGuessed
+
+            
             if index < currentIndex {
                 spb?.rewind()
             }
