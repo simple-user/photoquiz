@@ -50,6 +50,8 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var guessButtonImage: UIImageView!
+    @IBOutlet weak var bottomGradient: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var guessButton: UIButton!
@@ -63,7 +65,8 @@ class ViewController: UIViewController {
         self.collectionView.alpha = 0.0
         self.guessButton.alpha = 0.0
         self.topGradient.alpha = 0.0
-
+        guessButtonImage.alpha = 0.0
+        bottomGradient.alpha = 0.0
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -78,10 +81,15 @@ class ViewController: UIViewController {
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
                     self.topGradient.alpha = 1.0
+                    self.guessButtonImage.alpha = 1.0
+                    self.bottomGradient.alpha = 1.0
                 }, completion: { _ in
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
                     self.topGradient.alpha = 1.0
+                    self.guessButtonImage.alpha = 1.0
+                    self.bottomGradient.alpha = 1.0
+
                 })
             }
         }
@@ -99,7 +107,7 @@ class ViewController: UIViewController {
 
         spb?.removeFromSuperview()
         
-        spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 5)
+        spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 120)
         spb?.frame = CGRect(x: 15, y: 28, width: view.frame.width - 30, height: 2)
         spb?.delegate = self
         spb?.topColor = UIColor.white
