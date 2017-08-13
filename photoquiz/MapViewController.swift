@@ -103,7 +103,7 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: "HardcodedId")
         }
-        self.setImage(#imageLiteral(resourceName: "normal"), forView: view)
+        self.setImage(#imageLiteral(resourceName: "NormalPin"), forView: view)
         return view
     }
 
@@ -117,11 +117,14 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         if pin.isTruePoint {
+            self.setImage(#imageLiteral(resourceName: "TruePin"), forView: view)
             self.navigationController?.popViewController(animated: true)
             return
         }
+        else {
+            self.setImage(#imageLiteral(resourceName: "WrongPin"), forView: view)
+        }
         self.tappedPoints.insert(pin)
-        self.setImage(#imageLiteral(resourceName: "bad"), forView: view)
     }
 
     // func to set image for ping (with size correction)
