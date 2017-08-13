@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7683C245D7E3764E969051388E99AC5B'
-               BlueprintName = 'SwiftyJSON'
+               BlueprintIdentifier = '184CC6EB0D9F1C3461AE11C495849FB1'
+               BlueprintName = 'StepProgressBar'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwiftyJSON.framework'>
+               BuildableName = 'StepProgressBar.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
