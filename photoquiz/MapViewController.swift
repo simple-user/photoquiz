@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import Pulley
-
+import Presentr
 
 class MapViewController: UIViewController {
 
@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.centerMapOnLocation()
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -38,18 +39,41 @@ class MapViewController: UIViewController {
                                                      span: MKCoordinateSpan(latitudeDelta: 0.17014498714487303,
                                                                             longitudeDelta: 0.1868872709158893))
 
+    let controllerForPresenter = InfoViewController()
+    fileprivate let presenter: Presentr = {
+//        let width = ModalSize.full
+//        let height = ModalSize.fluid(percentage: 0.20)
+//        let center = ModalCenterPosition.customOrigin(origin: CGPoint(x: 0, y: 0))
+//        let customType = PresentationType.custom(width: width, height: height, center: center)
+
+        let customPresenter = Presentr(presentationType: .alert)
+        customPresenter.transitionType = .coverVerticalFromTop
+        customPresenter.dismissTransitionType = .crossDissolve
+        customPresenter.roundCorners = false
+        customPresenter.backgroundColor = .green
+        customPresenter.backgroundOpacity = 0.5
+        customPresenter.dismissOnSwipe = true
+        customPresenter.dismissOnSwipeDirection = .top
+        return customPresenter
+    }()
+
 
     private func centerMapOnLocation() {
         guard points != nil else { return }
         guard let coordinateRegion = self.getCoordRegion() else { return }
-        print("my region: \(coordinateRegion)")
         self.rivneMapView.setRegion(coordinateRegion, animated: true)
         self.addPoints()
     }
 
     // adding points to the map
-    private func addPoints() {
+    fileprivate func addPoints() {
+        print("added points count = \(self.points.count)")
         self.rivneMapView.addAnnotations(self.points)
+    }
+
+    fileprivate func removePoints() {
+        guard self.rivneMapView != nil && self.points != nil else { return }
+        self.rivneMapView.removeAnnotations(self.points)
     }
 
     // get coord rect to whow all points
@@ -93,10 +117,6 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
 
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("delegte region: \(mapView.region)")
-    }
-
     // dequeue for points
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var view: MKAnnotationView
@@ -111,6 +131,9 @@ extension MapViewController: MKMapViewDelegate {
 
     // change point in to red after select
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+
+        customPresentViewController(self.presenter, viewController: self.controllerForPresenter, animated: true, completion: nil)
+
         guard let pin = view.annotation as? PhotoPoint else { return }
         if self.tappedPoints.contains(where: { point -> Bool in
             point.id == pin.id
@@ -120,8 +143,9 @@ extension MapViewController: MKMapViewDelegate {
         }
         if pin.isTruePoint {
             self.setImage(#imageLiteral(resourceName: "TruePin"), forView: view)
-            collapseMap(self)
-            successCallback?()
+
+            // collapseMap(self)
+            // successCallback?()
             return
         }
         else {
@@ -138,8 +162,8 @@ extension MapViewController: MKMapViewDelegate {
         let y = view.frame.origin.y
         let w = view.frame.width
         let h = view.frame.height
-        let w1: CGFloat = 20.0
-        let h1: CGFloat = 20.0
+        let w1: CGFloat = 40.0
+        let h1: CGFloat = 40.0
         view.frame = CGRect(x: x + ((w - w1) / 2),
                             y: y + ((h - h1) / 2),
                             width: w1,
@@ -170,6 +194,7 @@ extension MapViewController: PulleyPrimaryContentControllerDelegate {
     func drawerPositionDidChange(drawer: PulleyViewController) {
         if drawer.drawerPosition == .collapsed || drawer.drawerPosition == .closed {
             self.rivneMapView.setRegion(self.stockRegion, animated: false)
+            self.removePoints()
         }
     }
 }
