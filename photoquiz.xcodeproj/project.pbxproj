@@ -421,7 +421,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B233B498CB11547062859059 /* Pods-photoquiz.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = photoquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -436,7 +436,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F32CDCE1418B88836F9A58FB /* Pods-photoquiz.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = photoquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -78,7 +78,7 @@ class ViewController: UIViewController {
                              y: self.view.center.y - (size.height) / 2)
         self.activityIndicator = NVActivityIndicatorView(frame: CGRect(origin: origin, size: size),
                                                type: NVActivityIndicatorType.pacman,
-                                               color: UIColor.red /* UIColor(red: 57.0 / 255.0, green: 97.0 / 255.0, blue: 45.0 / 255.0, alpha: 1.0) */ )
+                                               color: UIColor(red: 56.0 / 209.0, green: 146.0 / 255.0, blue: 45.0 / 255.0, alpha: 0.7))
         self.view.addSubview(activityIndicator)
 
 
