@@ -88,7 +88,7 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
             // Metadata contains file metadata such as size, content-type, and download URL.
             let storagePath = "gs://\(metadata.bucket)/\(metadata.path!)"
             
-            let dict = ["id": id, "path": storagePath, "location":["lat":location.coordinate.latitude, "lon":location.coordinate.latitude]] as [String : Any]
+            let dict = ["id": id, "path": storagePath, "location":["lat":location.coordinate.latitude, "lon":location.coordinate.longitude]] as [String : Any]
 
             let ref = Database.database().reference()
             ref.child("\(pathToNotApprovedPhotos)/\(id)").setValue(dict)

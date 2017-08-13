@@ -216,7 +216,7 @@ class ViewController: UIViewController {
     private func getPhoto(fromModel model: PhotoDBModel, completion: @escaping (UIImage) -> Void) {
         
         let gsReference = storage.reference(forURL: model.path)
-        gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        gsReference.getData(maxSize: 3 * 1024 * 1024) { data, error in
             if let error = error {
                 // Uh-oh, an error occurred!
                 debugPrint(error)
