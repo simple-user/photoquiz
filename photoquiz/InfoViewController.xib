@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="contentView" destination="779-Ve-p7n" id="kUn-5V-ta3"/>
                 <outlet property="imageView" destination="4w8-BX-vi7" id="OMu-vw-MPe"/>
+                <outlet property="messageLabel" destination="IG9-s8-XFq" id="jNq-h5-Xuc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
