@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     var previousImage: UIImage?
     var nextImage: UIImage?
 
+    var spb: SegmentedProgressBar!
+    
     // all points from db
     var models = [PhotoDBModel]() {
         didSet {
@@ -36,7 +38,7 @@ class ViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
 
     override func viewDidLoad() {
-
+        
         self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
 
         self.activityIndicator.startAnimating()
@@ -50,9 +52,31 @@ class ViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 self.collectionView.reloadData()
                 self.collectionView.isHidden = false
+                self.setupProgressBar(photosCount: self.currentModels.count)
                 print("vse ok")
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func setupProgressBar(photosCount: Int) {
+        
+        spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 5)
+        spb.frame = CGRect(x: 15, y: 28, width: view.frame.width - 30, height: 2)
+        spb.delegate = self
+        spb.topColor = UIColor.white
+        spb.bottomColor = UIColor.white.withAlphaComponent(0.25)
+        spb.padding = 2
+        self.view.addSubview(spb)
+        
+        spb.startAnimation()
     }
 
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
@@ -192,6 +216,18 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
+extension ViewController: SegmentedProgressBarDelegate {
+
+    func segmentedProgressBarChangedIndex(index: Int) {
+    
+    }
+    
+    func segmentedProgressBarFinished() {
+    
+    }
+
+}
 
 
 
