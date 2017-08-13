@@ -72,6 +72,7 @@ class MapViewController: UIViewController {
 
     fileprivate func removePoints() {
         guard self.rivneMapView != nil && self.points != nil else { return }
+        tappedPoints.removeAll()
         self.rivneMapView.removeAnnotations(self.points)
     }
 
@@ -124,7 +125,7 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             view = MKAnnotationView(annotation: annotation, reuseIdentifier: "HardcodedId")
         }
-        self.setImage(#imageLiteral(resourceName: "NormalPin"), forView: view)
+        self.setImage(#imageLiteral(resourceName: "pin2Copy"), forView: view)
         return view
     }
 
@@ -139,12 +140,12 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         if pin.isTruePoint {
-            self.setImage(#imageLiteral(resourceName: "TruePin"), forView: view)
+            self.setImage(#imageLiteral(resourceName: "true"), forView: view)
             self.infoController.isTrueAnswer = true
         }
         else {
             self.infoController.isTrueAnswer = false
-            self.setImage(#imageLiteral(resourceName: "WrongPin"), forView: view)
+            self.setImage(#imageLiteral(resourceName: "fascle"), forView: view)
         }
         self.tappedPoints.insert(pin)
 
