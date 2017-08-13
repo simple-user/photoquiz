@@ -25,7 +25,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="779-Ve-p7n" userLabel="content view">
                     <rect key="frame" x="0.0" y="0.0" width="327" height="302"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="4w8-BX-vi7">
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="4w8-BX-vi7">
                             <rect key="frame" x="118.5" y="40" width="90" height="105"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="105" id="2Db-Ft-exH"/>
@@ -94,6 +94,6 @@
     </objects>
     <resources>
         <image name="button_green" width="288" height="55"/>
-        <image name="star" width="90" height="105"/>
+        <image name="win" width="90" height="90"/>
     </resources>
 </document>
