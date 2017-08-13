@@ -106,8 +106,10 @@
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
                     <connections>
                         <outlet property="activityIndicator" destination="G51-Hc-4Nd" id="eyI-NK-8bh"/>
+                        <outlet property="bottomGradient" destination="26G-LX-idX" id="cvg-fr-G2i"/>
                         <outlet property="collectionView" destination="rAF-tZ-VY0" id="cX3-dV-lIy"/>
-                        <outlet property="guessButton" destination="8WK-aP-OKe" id="frZ-ys-eUQ"/>
+                        <outlet property="guessButton" destination="8WK-aP-OKe" id="NS2-Go-Yoj"/>
+                        <outlet property="guessButtonImage" destination="hXV-Er-35f" id="78j-6p-GhF"/>
                         <outlet property="topGradient" destination="scZ-tO-ezg" id="o9P-wn-dTr"/>
                         <segue destination="lmM-3w-noh" kind="show" identifier="toMap" id="HiL-Y5-Ddh"/>
                     </connections>

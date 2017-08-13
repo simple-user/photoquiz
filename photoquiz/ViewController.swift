@@ -34,6 +34,8 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var guessButtonImage: UIImageView!
+    @IBOutlet weak var bottomGradient: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var guessButton: UIButton!
@@ -47,7 +49,8 @@ class ViewController: UIViewController {
         self.collectionView.alpha = 0.0
         self.guessButton.alpha = 0.0
         self.topGradient.alpha = 0.0
-
+        guessButtonImage.alpha = 0.0
+        bottomGradient.alpha = 0.0
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -62,10 +65,15 @@ class ViewController: UIViewController {
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
                     self.topGradient.alpha = 1.0
+                    self.guessButtonImage.alpha = 1.0
+                    self.bottomGradient.alpha = 1.0
                 }, completion: { _ in
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
                     self.topGradient.alpha = 1.0
+                    self.guessButtonImage.alpha = 1.0
+                    self.bottomGradient.alpha = 1.0
+
                 })
             }
         }
