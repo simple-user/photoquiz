@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         }
         let newIndexPath = IndexPath(row: 0, section: currentIndex)
         collectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
-
+        spb?.skip()
     }
     
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
