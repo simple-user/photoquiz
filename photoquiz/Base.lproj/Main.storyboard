@@ -43,6 +43,12 @@
                                     <constraint firstAttribute="height" constant="89" id="wCB-8f-E8j"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="26G-LX-idX">
+                                <rect key="frame" x="0.0" y="231" width="375" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="3ir-Tz-QZQ"/>
+                                </constraints>
+                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="G51-Hc-4Nd">
                                 <rect key="frame" x="177.5" y="150" width="20" height="20"/>
                                 <color key="color" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,20 +60,32 @@
                                     <action selector="backToMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Duy-cP-h7d"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle2" translatesAutoresizingMaskIntoConstraints="NO" id="hXV-Er-35f">
+                                <rect key="frame" x="97" y="245.5" width="180" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="dIa-fC-Luc"/>
+                                    <constraint firstAttribute="height" constant="60" id="kIZ-ft-BUM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="scZ-tO-ezg" secondAttribute="trailing" id="04f-QX-nK9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="26G-LX-idX" secondAttribute="bottom" id="4UR-d4-GFb"/>
+                            <constraint firstItem="hXV-Er-35f" firstAttribute="centerX" secondItem="26G-LX-idX" secondAttribute="centerX" id="7oC-gJ-Wni"/>
                             <constraint firstItem="4Zl-kg-a55" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oho-8l-Euv"/>
                             <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S3s-0B-W64"/>
                             <constraint firstItem="4Zl-kg-a55" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Sod-6J-I6m"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Spk-i7-mT8"/>
                             <constraint firstItem="G51-Hc-4Nd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TVn-br-1a4"/>
+                            <constraint firstItem="26G-LX-idX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UUW-BV-OWt"/>
                             <constraint firstAttribute="trailing" secondItem="rAF-tZ-VY0" secondAttribute="trailing" id="V2Q-DB-WIw"/>
                             <constraint firstItem="scZ-tO-ezg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="W8m-3w-hnY"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bY3-aU-ThG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAF-tZ-VY0" secondAttribute="bottom" id="cCx-fM-AWF"/>
+                            <constraint firstItem="hXV-Er-35f" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" id="dG0-Us-Bnr"/>
                             <constraint firstItem="scZ-tO-ezg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fCi-GT-c93"/>
+                            <constraint firstAttribute="trailing" secondItem="26G-LX-idX" secondAttribute="trailing" id="n3v-G1-aBL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
@@ -293,11 +311,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bottom_gradient" width="375" height="89"/>
         <image name="cityscape" width="120" height="120"/>
         <image name="fields1" width="110" height="110"/>
         <image name="group" width="225" height="113"/>
         <image name="island" width="120" height="120"/>
         <image name="mill" width="100" height="100"/>
+        <image name="rectangle2" width="180" height="60"/>
         <image name="rectangle4" width="1" height="87"/>
         <image name="river" width="150" height="150"/>
         <image name="spruce" width="60" height="60"/>
