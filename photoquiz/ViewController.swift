@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SwiftyJSON
 import Pulley
+import Presentr
 
 
 class ViewController: UIViewController {
@@ -25,7 +26,22 @@ class ViewController: UIViewController {
     var previousImage: UIImage?
     var nextImage: UIImage?
     var currentIndex: Int = 0
+    var rightAnswers = 0
     var spb: SegmentedProgressBar?
+    let infoController = InfoViewController()
+    let presenter: Presentr = {
+
+        let customPresenter = Presentr(presentationType: .alert)
+        customPresenter.transitionType = TransitionType.coverVertical
+        customPresenter.dismissTransitionType = .crossDissolve
+        customPresenter.roundCorners = false
+        customPresenter.backgroundColor = .black
+        customPresenter.backgroundOpacity = 0.5
+        customPresenter.dismissOnSwipe = true
+        customPresenter.dismissOnSwipeDirection = .top
+        return customPresenter
+    }()
+
     
     // all points from db
     var models = [PhotoDBModel]() {
@@ -128,8 +144,19 @@ class ViewController: UIViewController {
     @IBAction func onGuess() {
         self.onShowMap(trueModel: currentModels[currentIndex])
     }
-    
+
     func showNextImage() {
+
+        self.rightAnswers += 5
+        if self.rightAnswers == self.currentModels.count {
+            // end of the round
+            self.infoController.dismissCompletion = {
+                self.parent?.dismiss(animated: true, completion: nil)
+            }
+        
+            customPresentViewController(presenter, viewController: infoController, animated: true, completion: nil)
+        }
+
 
         // Here we have to scroll right
         currentIndex += 1

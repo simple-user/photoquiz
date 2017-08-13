@@ -11,7 +11,8 @@ import UIKit
 class InfoViewController: UIViewController {
 
     var onButtinComletion: (() -> Void)?
-    var isTrueAnswer: Bool = false
+    var dismissCompletion: (() -> Void)?
+    var isTrueAnswer: Bool?
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -22,8 +23,10 @@ class InfoViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.imageView.image = isTrueAnswer ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "sad")
-        self.messageLabel.text = isTrueAnswer ? "Правильна відповідь" : "Ви помолились"
+        if let isTrueAnswer = isTrueAnswer {
+            self.imageView.image = isTrueAnswer ? #imageLiteral(resourceName: "star") : #imageLiteral(resourceName: "sad")
+            self.messageLabel.text = isTrueAnswer ? "Правильна відповідь" : "Ви помолились"
+        }
     }
 
     @IBOutlet var contentView: UIView! {
@@ -37,8 +40,8 @@ class InfoViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
 
     @IBAction func onButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        if isTrueAnswer {
+        self.dismiss(animated: true, completion: self.dismissCompletion)
+        if (isTrueAnswer ?? true) {
             self.onButtinComletion?()
         }
     }
