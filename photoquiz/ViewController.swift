@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     var currentImage = #imageLiteral(resourceName: "noimage")
     var previousImage: UIImage?
     var nextImage: UIImage?
-
+    var currentIndex: Int = 0
     var spb: SegmentedProgressBar!
     
     // all points from db
@@ -215,6 +215,26 @@ extension ViewController: UICollectionViewDataSource {
         return view
     }
 }
+
+
+extension ViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        let currentIndexPathes = collectionView.indexPathsForVisibleItems
+        if let index = currentIndexPathes.first?.section {
+            if index < currentIndex {
+                spb.rewind()
+            }
+            else if index > currentIndex {
+                spb.skip()
+            }
+            currentIndex = index
+        }
+        
+    }
+}
+
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
