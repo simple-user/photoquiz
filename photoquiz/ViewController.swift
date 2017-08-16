@@ -60,6 +60,7 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var guessedLabel: UIStackView!
     @IBOutlet weak var stepPB: StepProgressBar!
     @IBOutlet weak var guessButtonImage: UIImageView!
@@ -85,10 +86,9 @@ class ViewController: UIViewController {
         self.activityIndicator.startAnimating()
         self.collectionView.alpha = 0.0
         self.guessButton.alpha = 0.0
-        self.topGradient.alpha = 0.0
+        self.topView.alpha = 0.0
         guessButtonImage.alpha = 0.0
         bottomGradient.alpha = 0.0
-        stepPB?.alpha = 0.0
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -101,17 +101,15 @@ class ViewController: UIViewController {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
-                    self.topGradient.alpha = 1.0
+                    self.topView.alpha = 1.0
                     self.guessButtonImage.alpha = 1.0
                     self.bottomGradient.alpha = 1.0
-                    self.stepPB?.alpha = 0.75
                 }, completion: { _ in
                     self.collectionView.alpha = 1.0
                     self.guessButton.alpha = 1.0
-                    self.topGradient.alpha = 1.0
+                    self.topView.alpha = 1.0
                     self.guessButtonImage.alpha = 1.0
                     self.bottomGradient.alpha = 1.0
-                    self.stepPB?.alpha = 0.75
                 })
             }
         }
@@ -195,10 +193,10 @@ class ViewController: UIViewController {
     
     func hideUI(reset: Bool = false) {
         
-        let toHide = reset == false ? topGradient.isHidden == false : false
+        let toHide = reset == false ? topView.isHidden == false : false
         
         self.guessButton.isHidden = toHide
-        self.topGradient.isHidden = toHide
+        self.topView.isHidden = toHide
         self.guessButtonImage.isHidden = toHide
         self.bottomGradient.isHidden = toHide
     }
