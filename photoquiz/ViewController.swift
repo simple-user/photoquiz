@@ -196,11 +196,17 @@ class ViewController: UIViewController {
     func hideUI(reset: Bool = false) {
         
         let toHide = reset == false ? topGradient.isHidden == false : false
-        
-        self.guessButton.isHidden = toHide
-        self.topGradient.isHidden = toHide
-        self.guessButtonImage.isHidden = toHide
-        self.bottomGradient.isHidden = toHide
+        let alpha = toHide ? 0.0 : 1.0
+
+        self.topGradient.isHidden = false
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.guessButton.alpha = CGFloat(alpha)
+            self.topGradient.alpha = CGFloat(alpha)
+            self.guessButtonImage.alpha = CGFloat(alpha)
+            self.bottomGradient.alpha = CGFloat(alpha)
+        }, completion: { _ in
+            self.topGradient.isHidden = toHide
+        })
     }
     
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
