@@ -13,5 +13,6 @@ target 'photoquiz' do
   pod 'Presentr', '~> 1.2'
   pod 'StepProgressBar'
   pod 'Kingfisher', '~> 3.10'
+  pod 'NVActivityIndicatorView', '~> 3.7'
   
 end

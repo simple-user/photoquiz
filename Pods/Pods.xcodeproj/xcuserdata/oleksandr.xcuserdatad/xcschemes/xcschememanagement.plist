@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-photoquiz.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,12 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>065CC31F2E819DD44F2609E06BF5C010</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>184CC6EB0D9F1C3461AE11C495849FB1</key>
+		<key>02962E8A646E1C516202611D12F0F7C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,17 +82,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F3F85484BD654762BA5ABE9377E79F0</key>
+		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7683C245D7E3764E969051388E99AC5B</key>
+		<key>45568D634629CF338CCB90E3980078B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5ED0AC5B9BB7B8ACC7E5E465D247152</key>
+		<key>B128D5BC5537A1074B436BFCBAFAB4A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC52915849AD4E241E4E947D9AB8FFEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D47650A6FC87115A3E98292673A4961C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D698574B8E469EBF1A64E3E748616AAA</key>
+		<key>CADBC0DDBAF4D2449E9DED6E396BFB28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EFA20056E28436A86A09C06B3B670642</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F142356A3FD383D61A58857F2B87B26E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
