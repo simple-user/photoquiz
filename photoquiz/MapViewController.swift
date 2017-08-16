@@ -24,9 +24,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.centerMapOnLocation()
-        self.infoController.onButtinComletion = {
-            self.collapseMap(self)
-            self.successCallback?()
+        self.infoController.onButtinComletion = { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.collapseMap(weakSelf)
+            weakSelf.successCallback?()
         }
     }
 
@@ -106,7 +107,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    @IBAction func collapseMap(_ sender: Any) {
+    @IBAction func collapseMap(_ sender: Any?) {
         
         if let drawer = self.parent as? PulleyViewController {
             drawer.setDrawerPosition(position: .collapsed)

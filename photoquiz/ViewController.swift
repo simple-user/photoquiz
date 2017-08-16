@@ -171,8 +171,8 @@ class ViewController: UIViewController {
         self.rightAnswers += 1
         if self.rightAnswers == self.currentModels.count {
             // end of the round
-            self.infoController.dismissCompletion = {
-                self.parent?.dismiss(animated: true, completion: nil)
+            self.infoController.dismissCompletion = { [weak self] in
+                self?.parent?.dismiss(animated: true, completion: nil)
             }
         
             customPresentViewController(presenter, viewController: infoController, animated: true, completion: nil)
