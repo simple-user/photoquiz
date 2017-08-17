@@ -60,6 +60,8 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var guessedLabel: UIStackView!
     @IBOutlet weak var stepPB: StepProgressBar!
     @IBOutlet weak var guessButtonImage: UIImageView!
@@ -84,11 +86,8 @@ class ViewController: UIViewController {
 
         self.activityIndicator.startAnimating()
         self.collectionView.alpha = 0.0
-        self.guessButton.alpha = 0.0
-        self.topGradient.alpha = 0.0
-        guessButtonImage.alpha = 0.0
-        bottomGradient.alpha = 0.0
-        stepPB?.alpha = 0.0
+        self.bottomView.alpha = 0.0
+        self.topView.alpha = 0.0
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
@@ -100,18 +99,12 @@ class ViewController: UIViewController {
 
                 UIView.animate(withDuration: 0.5, animations: {
                     self.collectionView.alpha = 1.0
-                    self.guessButton.alpha = 1.0
-                    self.topGradient.alpha = 1.0
-                    self.guessButtonImage.alpha = 1.0
-                    self.bottomGradient.alpha = 1.0
-                    self.stepPB?.alpha = 0.75
+                    self.bottomView.alpha = 1.0
+                    self.topView.alpha = 1.0
                 }, completion: { _ in
                     self.collectionView.alpha = 1.0
-                    self.guessButton.alpha = 1.0
-                    self.topGradient.alpha = 1.0
-                    self.guessButtonImage.alpha = 1.0
-                    self.bottomGradient.alpha = 1.0
-                    self.stepPB?.alpha = 0.75
+                    self.bottomView.alpha = 1.0
+                    self.topView.alpha = 1.0
                 })
             }
         }
@@ -173,8 +166,8 @@ class ViewController: UIViewController {
         self.rightAnswers += 1
         if self.rightAnswers == self.currentModels.count {
             // end of the round
-            self.infoController.dismissCompletion = {
-                self.parent?.dismiss(animated: true, completion: nil)
+            self.infoController.dismissCompletion = { [weak self] in
+                self?.parent?.dismiss(animated: true, completion: nil)
             }
         
             customPresentViewController(presenter, viewController: infoController, animated: true, completion: nil)
@@ -327,7 +320,6 @@ extension ViewController: UIScrollViewDelegate {
 
         guessedLabel.isHidden = true
         guessButton.isHidden = true
-        guessButtonImage.isHidden = true
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -338,7 +330,6 @@ extension ViewController: UIScrollViewDelegate {
             let isCurrentPhotoAlreadyGuessed = guessedIndexes.contains(index)
             guessedLabel.isHidden = isCurrentPhotoAlreadyGuessed == false
             guessButton.isHidden = isCurrentPhotoAlreadyGuessed
-            guessButtonImage.isHidden = isCurrentPhotoAlreadyGuessed
 
             
             if index < currentIndex {
