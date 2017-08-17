@@ -99,76 +99,79 @@
                                     <constraint firstAttribute="trailing" secondItem="Vr1-ra-iMS" secondAttribute="trailing" constant="40" id="vAx-1d-KmW"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="26G-LX-idX">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-Nm-mdj">
                                 <rect key="frame" x="0.0" y="231" width="375" height="89"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="89" id="3ir-Tz-QZQ"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-aP-OKe" userLabel="guess">
-                                <rect key="frame" x="97.5" y="258.5" width="180" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Відгадати">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onGuess" destination="BYZ-38-t0r" eventType="touchUpInside" id="RZ0-ay-bQg"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Rectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hXV-Er-35f">
-                                <rect key="frame" x="97.5" y="255.5" width="180" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="dIa-fC-Luc"/>
-                                    <constraint firstAttribute="height" constant="44" id="kIZ-ft-BUM"/>
-                                </constraints>
-                            </imageView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p9c-mU-vCj">
-                                <rect key="frame" x="130" y="268.5" width="114.5" height="24"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="wsK-1E-i4j">
-                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottom_gradient" translatesAutoresizingMaskIntoConstraints="NO" id="26G-LX-idX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="89" id="3ir-Tz-QZQ"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Відгадано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64U-aW-mLT">
-                                        <rect key="frame" x="34" y="0.0" width="80.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-aP-OKe" userLabel="guess">
+                                        <rect key="frame" x="97.5" y="22.5" width="180" height="44"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="40J-W5-v6K"/>
+                                            <constraint firstAttribute="width" constant="180" id="n34-MR-HEZ"/>
+                                        </constraints>
+                                        <state key="normal" title="Відгадати" backgroundImage="Rectangle">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onGuess" destination="BYZ-38-t0r" eventType="touchUpInside" id="RZ0-ay-bQg"/>
+                                        </connections>
+                                    </button>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p9c-mU-vCj">
+                                        <rect key="frame" x="130" y="37.5" width="114.5" height="24"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="wsK-1E-i4j">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Відгадано" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64U-aW-mLT">
+                                                <rect key="frame" x="34" y="0.0" width="80.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="8WK-aP-OKe" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" id="0lF-CN-MSr"/>
+                                    <constraint firstItem="8WK-aP-OKe" firstAttribute="centerX" secondItem="26G-LX-idX" secondAttribute="centerX" id="30E-OQ-gbN"/>
+                                    <constraint firstAttribute="height" constant="89" id="5Xh-oG-fj7"/>
+                                    <constraint firstAttribute="trailing" secondItem="26G-LX-idX" secondAttribute="trailing" id="5kT-TW-0Sn"/>
+                                    <constraint firstAttribute="bottom" secondItem="26G-LX-idX" secondAttribute="bottom" id="LXE-ne-SkE"/>
+                                    <constraint firstItem="p9c-mU-vCj" firstAttribute="centerX" secondItem="26G-LX-idX" secondAttribute="centerX" id="Wgb-xW-SH2"/>
+                                    <constraint firstItem="26G-LX-idX" firstAttribute="leading" secondItem="lxE-Nm-mdj" secondAttribute="leading" id="tgq-Hh-fnl"/>
+                                    <constraint firstItem="p9c-mU-vCj" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="5" id="uSJ-G0-hVO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TFw-fZ-0iH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Fr-zL-XnR"/>
-                            <constraint firstItem="p9c-mU-vCj" firstAttribute="centerX" secondItem="26G-LX-idX" secondAttribute="centerX" id="CE2-Q9-2t4"/>
-                            <constraint firstItem="8WK-aP-OKe" firstAttribute="centerX" secondItem="hXV-Er-35f" secondAttribute="centerX" id="FG4-eL-H5e"/>
                             <constraint firstAttribute="trailing" secondItem="TFw-fZ-0iH" secondAttribute="trailing" id="GTB-hC-bhv"/>
                             <constraint firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oho-8l-Euv"/>
                             <constraint firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Sod-6J-I6m"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Spk-i7-mT8"/>
-                            <constraint firstItem="hXV-Er-35f" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="5" id="Tye-he-8nD"/>
-                            <constraint firstItem="26G-LX-idX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UUW-BV-OWt"/>
+                            <constraint firstItem="lxE-Nm-mdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SuO-3S-gt1"/>
                             <constraint firstAttribute="trailing" secondItem="rAF-tZ-VY0" secondAttribute="trailing" id="V2Q-DB-WIw"/>
-                            <constraint firstItem="p9c-mU-vCj" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="5" id="Va6-G0-fqU"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="26G-LX-idX" secondAttribute="bottom" id="XII-pl-N3P"/>
-                            <constraint firstItem="8WK-aP-OKe" firstAttribute="height" secondItem="hXV-Er-35f" secondAttribute="height" id="XQj-1K-KwP"/>
-                            <constraint firstItem="hXV-Er-35f" firstAttribute="centerY" secondItem="26G-LX-idX" secondAttribute="centerY" constant="10" id="YQb-TA-esI"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bY3-aU-ThG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rAF-tZ-VY0" secondAttribute="bottom" id="cCx-fM-AWF"/>
-                            <constraint firstItem="hXV-Er-35f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cKs-gI-BH4"/>
-                            <constraint firstItem="8WK-aP-OKe" firstAttribute="centerY" secondItem="hXV-Er-35f" secondAttribute="centerY" constant="-5" id="gNu-k3-a1a"/>
                             <constraint firstItem="TFw-fZ-0iH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hJU-q9-x3C"/>
-                            <constraint firstAttribute="trailing" secondItem="26G-LX-idX" secondAttribute="trailing" id="n3v-G1-aBL"/>
-                            <constraint firstItem="8WK-aP-OKe" firstAttribute="width" secondItem="hXV-Er-35f" secondAttribute="width" id="xMc-B7-mrl"/>
+                            <constraint firstAttribute="trailing" secondItem="lxE-Nm-mdj" secondAttribute="trailing" id="q4c-tM-UAf"/>
+                            <constraint firstAttribute="bottom" secondItem="lxE-Nm-mdj" secondAttribute="bottom" id="rVC-y0-NO3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KM4-Nn-ieW"/>
                     <connections>
                         <outlet property="bottomGradient" destination="26G-LX-idX" id="cvg-fr-G2i"/>
+                        <outlet property="bottomView" destination="lxE-Nm-mdj" id="3d3-ce-cnz"/>
                         <outlet property="collectionView" destination="rAF-tZ-VY0" id="cX3-dV-lIy"/>
                         <outlet property="guessButton" destination="8WK-aP-OKe" id="NS2-Go-Yoj"/>
-                        <outlet property="guessButtonImage" destination="hXV-Er-35f" id="78j-6p-GhF"/>
                         <outlet property="guessedLabel" destination="p9c-mU-vCj" id="bLM-oi-pnL"/>
                         <outlet property="stepPB" destination="Vr1-ra-iMS" id="Iw1-Me-93x"/>
                         <outlet property="topGradient" destination="scZ-tO-ezg" id="o9P-wn-dTr"/>
