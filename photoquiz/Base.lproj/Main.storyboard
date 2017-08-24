@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QJc-Ia-Gvq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QJc-Ia-Gvq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -154,8 +153,6 @@
                         <constraints>
                             <constraint firstItem="TFw-fZ-0iH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Fr-zL-XnR"/>
                             <constraint firstAttribute="trailing" secondItem="TFw-fZ-0iH" secondAttribute="trailing" id="GTB-hC-bhv"/>
-                            <constraint firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="Oho-8l-Euv"/>
-                            <constraint firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Sod-6J-I6m"/>
                             <constraint firstItem="rAF-tZ-VY0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Spk-i7-mT8"/>
                             <constraint firstItem="lxE-Nm-mdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SuO-3S-gt1"/>
                             <constraint firstAttribute="trailing" secondItem="rAF-tZ-VY0" secondAttribute="trailing" id="V2Q-DB-WIw"/>
@@ -196,10 +193,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OZn-Yn-qXc">
-                                <rect key="frame" x="145" y="486" width="85" height="136"/>
+                                <rect key="frame" x="144" y="486" width="87" height="136"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-1m-WsO">
-                                        <rect key="frame" x="0.0" y="0.0" width="85" height="58"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
                                         <state key="normal" title="Play">
                                             <color key="titleColor" red="0.52047842741012573" green="0.56132751703262329" blue="0.54074519872665405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -209,7 +206,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7A-5n-0MB">
-                                        <rect key="frame" x="0.0" y="78" width="85" height="58"/>
+                                        <rect key="frame" x="0.0" y="78" width="87" height="58"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="38"/>
                                         <state key="normal" title="View">
                                             <color key="titleColor" red="0.52047842740000005" green="0.56132751700000005" blue="0.54074519870000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -233,7 +230,7 @@
                                 <rect key="frame" x="194" y="308" width="120" height="120"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="island" translatesAutoresizingMaskIntoConstraints="NO" id="A6r-5A-2SE">
-                                <rect key="frame" x="243" y="377" width="120" height="120"/>
+                                <rect key="frame" x="244" y="377" width="120" height="120"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mill" translatesAutoresizingMaskIntoConstraints="NO" id="3g0-PZ-Zhc">
                                 <rect key="frame" x="61" y="334" width="100" height="100"/>
