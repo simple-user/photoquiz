@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var currentModels = [PhotoDBModel]() {
         didSet {
             stepPB?.stepsCount = currentModels.count
+
         }
     }
     var guessedIndexes = [Int]()
@@ -91,7 +92,9 @@ class ViewController: UIViewController {
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
-        readPhotosFromDB(ref: dbRef) {
+        readPhotosFromDB(ref: dbRef, complited: { photoDBModels in
+            self.models = photoDBModels
+
             self.setCurrentItems {
                 // here ready to go! :)
                 self.activityIndicator.stopAnimating()
@@ -107,7 +110,7 @@ class ViewController: UIViewController {
                     self.topView.alpha = 1.0
                 })
             }
-        }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -272,20 +275,12 @@ class ViewController: UIViewController {
         }
     }
     
-    private func readPhotosFromDB(ref: DatabaseReference, complited: @escaping () -> Void ) {
+    private func readPhotosFromDB(ref: DatabaseReference, complited: @escaping (_ dbModels: [PhotoDBModel]) -> Void ) {
         ref.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
             
             // Get photos
             guard let value = snapshot.value as? NSDictionary else { return }
-            let json = JSON(value)
-            let photoModels:[PhotoDBModel]? = json.dictionary?.keys.map({
-                return PhotoDBModel(json: json[$0])
-            })
-            
-            if let p = photoModels {
-                self.models = p
-            }
-            complited()
+            complited(JSON(value).dictionaryValue.values.map { PhotoDBModel(json: $0) })
         })
     }
 }

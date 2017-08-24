@@ -83,6 +83,8 @@
 		11536C1A1F3E52D900090506 /* photoquiz */ = {
 			isa = PBXGroup;
 			children = (
+				11A0882C1F4F8FFB00E88F78 /* DataSources */,
+				11A0882B1F4F8FBD00E88F78 /* Components */,
 				11AC26371F40517F002877D0 /* InfoViewController.swift */,
 				11AC26381F40517F002877D0 /* InfoViewController.xib */,
 				27C452A91F40460200B978A2 /* 3d */,
@@ -110,6 +112,20 @@
 				27A83EFD1F3EB40D00A1CD1A /* PhotoDBModel.swift */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		11A0882B1F4F8FBD00E88F78 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		11A0882C1F4F8FFB00E88F78 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataSources;
 			sourceTree = "<group>";
 		};
 		27C452A91F40460200B978A2 /* 3d */ = {
