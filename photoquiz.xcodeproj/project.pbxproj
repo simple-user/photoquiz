@@ -239,7 +239,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz-resources.sh\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 			showEnvVarsInLog = 0;
 		};
 		35F7E2BFE12739FE6819850C /* [CP] Check Pods Manifest.lock */ = {

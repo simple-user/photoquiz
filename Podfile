@@ -14,5 +14,6 @@ target 'photoquiz' do
   pod 'StepProgressBar'
   pod 'Kingfisher', '~> 3.10'
   pod 'NVActivityIndicatorView', '~> 3.7'
+  pod 'SwiftLint'
   
 end
