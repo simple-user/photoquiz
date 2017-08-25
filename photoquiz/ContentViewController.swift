@@ -15,7 +15,7 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     let imagePicker = UIImagePickerController()
     let locationManager = CLLocationManager()
-    var image: UIImage? = nil
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,12 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: - Take image
+    // MARK: - Take image
     @IBAction func takePhoto(_ sender: UIButton) {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    //MARK: - Done image capturing
+    // MARK: - Done image capturing
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         self.imagePicker.dismiss(animated: true, completion: nil)
         self.image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -47,13 +47,12 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             self.locationManager.delegate = self
             self.locationManager.requestLocation()
-        }
-        else {
+        } else {
             debugPrint("Location Services disabled.")
         }
     }
     
-    //MARK: - Location Manager Delegate
+    // MARK: - Location Manager Delegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let image = self.image else { return }
         guard let location = locations.first else { return }
@@ -66,7 +65,7 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
         debugPrint("\(error.localizedDescription)")
     }
 
-    //MARK: - Working with final data
+    // MARK: - Working with final data
     func addAsset(image: UIImage, location: CLLocation) {
         debugPrint("got it!")
         
@@ -78,7 +77,7 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         guard let data = image.mediumQualityJPEGNSData else { return }
         
-        let uploadTask = ref.putData(data, metadata: nil) { (metadata, error) in
+        let uploadTask = ref.putData(data, metadata: nil) { metadata, _ in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
                 return
@@ -87,7 +86,11 @@ class ContentViewController: UIViewController, UIImagePickerControllerDelegate, 
             // Metadata contains file metadata such as size, content-type, and download URL.
             let storagePath = "gs://\(metadata.bucket)/\(metadata.path!)"
             
-            let dict = ["id": id, "path": storagePath, "location":["lat":location.coordinate.latitude, "lon":location.coordinate.longitude]] as [String : Any]
+            let dict = ["id": id,
+                        "path": storagePath,
+                        "location": ["lat": location.coordinate.latitude,
+                                     "lon": location.coordinate.longitude]]
+                        as [String : Any]
 
             let ref = Database.database().reference()
             ref.child("\(pathToNotApprovedPhotos)/\(id)").setValue(dict)

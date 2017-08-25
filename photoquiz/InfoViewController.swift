@@ -40,7 +40,7 @@ class InfoViewController: UIViewController {
 
     @IBAction func onButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: self.dismissCompletion)
-        if (isTrueAnswer ?? true) {
+        if isTrueAnswer ?? true {
             self.onButtinComletion?()
         }
     }

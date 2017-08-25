@@ -19,7 +19,7 @@ class MapViewController: UIViewController {
         self.centerMapOnLocation()
     }
 
-    var successCallback: (() -> ())?
+    var successCallback: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,8 +142,7 @@ extension MapViewController: MKMapViewDelegate {
         if pin.isTruePoint {
             self.setImage(#imageLiteral(resourceName: "true"), forView: view)
             self.infoController.isTrueAnswer = true
-        }
-        else {
+        } else {
             self.infoController.isTrueAnswer = false
             self.setImage(#imageLiteral(resourceName: "fascle"), forView: view)
         }
@@ -169,8 +168,6 @@ extension MapViewController: MKMapViewDelegate {
                             height: h1)
 
     }
-
-    
 }
 
 extension MapViewController: PulleyDrawerViewControllerDelegate {
@@ -197,4 +194,3 @@ extension MapViewController: PulleyPrimaryContentControllerDelegate {
         }
     }
 }
-

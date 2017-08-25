@@ -116,7 +116,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
     }
-    override var preferredStatusBarStyle : UIStatusBarStyle {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
@@ -322,17 +322,13 @@ extension ViewController: UIScrollViewDelegate {
             guessedLabel.isHidden = isCurrentPhotoAlreadyGuessed == false
             guessButton.isHidden = isCurrentPhotoAlreadyGuessed
 
-            
             if index < currentIndex {
                 spb?.rewind()
-            }
-            else if index > currentIndex {
+            } else if index > currentIndex {
                 spb?.skip()
             }
             currentIndex = index
         }
-//        hideUI(reset: true)
-        
     }
 }
 
@@ -364,4 +360,3 @@ extension ViewController: PulleyPrimaryContentControllerDelegate {
         }
     }
 }
-

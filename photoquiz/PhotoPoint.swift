@@ -18,8 +18,8 @@ class PhotoPoint: NSObject, MKAnnotation {
     var isTruePoint: Bool
 
     init(pointId: String, location: CLLocationCoordinate2D, isTruePoint: Bool = false) {
-        id = pointId
-        coordinate = location
+        self.id = pointId
+        self.coordinate = location
         self.isTruePoint = isTruePoint
         super.init()
     }

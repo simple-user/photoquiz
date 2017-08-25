@@ -146,7 +146,7 @@ class SegmentedProgressBar: UIView {
     }
 }
 
-fileprivate class Segment {
+private class Segment {
     let bottomSegmentView = UIView()
     let topSegmentView = UIView()
     init() {
