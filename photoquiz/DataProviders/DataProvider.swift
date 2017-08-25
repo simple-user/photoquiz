@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DataProvider: GetItemsProtocol {}
 
 protocol GetItemsProtocol {
 
     func getPhotoModels(complited: @escaping (_ dbModels: [PhotoDBModel]) -> Void )
-
+    func getPhoto(withPath path: String, completion: @escaping (UIImage) -> Void)
 }

@@ -144,16 +144,15 @@ class ViewController: UIViewController {
         self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
 
         for index in 0 ..< self.currentModels.count {
-            getPhoto(fromModel: self.currentModels[index], completion: { image in
+            self.dataProvider.getPhoto(withPath: self.currentModels[index].path, completion: { image in
 
                 self.currentImages[index] = image
                 if index == 0 {
                     DispatchQueue.main.async {
-                        print("readyToGo()")
-                        readyToGo()
+                    print("readyToGo()")
+                    readyToGo()
                     }
                 }
-
             })
         }
     }
@@ -248,32 +247,6 @@ class ViewController: UIViewController {
             PhotoPoint(pointId: $0.id, location: $0.location)
         }
         return points
-    }
-    
-    private func getPhoto(fromModel model: PhotoDBModel, completion: @escaping (UIImage) -> Void) {
-
-        if ImageCache.default.isImageCached(forKey: model.id).cached {
-            let image = ImageCache.default.retrieveImageInDiskCache(forKey: model.id)
-
-            if let image = image {
-                completion(image)
-                return
-            }
-        }
-
-        let gsReference = storage.reference(forURL: model.path)
-        gsReference.getData(maxSize: 3 * 1024 * 1024) { data, error in
-            if let error = error {
-                // Uh-oh, an error occurred!
-                debugPrint(error)
-                completion(#imageLiteral(resourceName: "noimage"))
-            } else {
-                // Data for "images/island.jpg" is returned
-                let image = UIImage(data: data!) ?? #imageLiteral(resourceName: "noimage")
-                ImageCache.default.store(image, forKey: model.id)
-                completion(image)
-            }
-        }
     }
 }
 

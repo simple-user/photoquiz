@@ -20,6 +20,19 @@ class FirebaseDataProvider: DataProvider {
 
     }
 
+    func getPhoto(withPath path: String, completion: @escaping (UIImage) -> Void) {
+        let gsReference = storage.reference(forURL: path)
+        gsReference.getData(maxSize: 3 * 1024 * 1024) { data, error in
+            if let error = error {
+                debugPrint(error)
+                completion(#imageLiteral(resourceName: "noimage"))
+            } else if let data = data {
+                let image = UIImage(data: data) ?? #imageLiteral(resourceName: "noimage")
+                completion(image)
+            }
+        }
+    }
+
     private let dbRef: DatabaseReference = Database.database().reference()
     private let storage: Storage = Storage.storage()
 
