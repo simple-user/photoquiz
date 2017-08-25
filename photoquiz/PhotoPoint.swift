@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import MapKit
 
-
 class PhotoPoint: NSObject, MKAnnotation {
 
     var coordinate: CLLocationCoordinate2D

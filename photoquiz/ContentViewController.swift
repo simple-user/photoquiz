@@ -11,7 +11,6 @@ import Photos
 import AssetsLibrary
 import Firebase
 
-
 class ContentViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
     let imagePicker = UIImagePickerController()

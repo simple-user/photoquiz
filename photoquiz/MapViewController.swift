@@ -57,7 +57,6 @@ class MapViewController: UIViewController {
         return customPresenter
     }()
 
-
     private func centerMapOnLocation() {
         guard points != nil else { return }
         guard let coordinateRegion = self.getCoordRegion() else { return }
@@ -198,5 +197,4 @@ extension MapViewController: PulleyPrimaryContentControllerDelegate {
         }
     }
 }
-
 

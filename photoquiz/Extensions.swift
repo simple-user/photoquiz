@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension MutableCollection where Index == Int {
     /// Shuffle the elements of `self` in-place.
     mutating func shuffle() {

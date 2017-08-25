@@ -84,7 +84,6 @@ class ViewController: UIViewController {
                                                color: UIColor(red: 56.0 / 209.0, green: 146.0 / 255.0, blue: 45.0 / 255.0, alpha: 0.7))
         self.view.addSubview(activityIndicator)
 
-
         self.activityIndicator.startAnimating()
         self.collectionView.alpha = 0.0
         self.bottomView.alpha = 0.0
@@ -178,7 +177,6 @@ class ViewController: UIViewController {
             return
         }
 
-
         // Here we have to scroll right
         currentIndex += 1
         if currentIndex >= currentModels.count {
@@ -250,7 +248,6 @@ class ViewController: UIViewController {
     
     private func getPhoto(fromModel model: PhotoDBModel, completion: @escaping (UIImage) -> Void) {
 
-
         if ImageCache.default.isImageCached(forKey: model.id).cached {
             let image = ImageCache.default.retrieveImageInDiskCache(forKey: model.id)
 
@@ -308,7 +305,6 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-
 extension ViewController: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -340,13 +336,11 @@ extension ViewController: UIScrollViewDelegate {
     }
 }
 
-
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.bounds.size
     }
 }
-
 
 extension ViewController: SegmentedProgressBarDelegate {
 
@@ -362,7 +356,6 @@ extension ViewController: SegmentedProgressBarDelegate {
 
 }
 
-
 extension ViewController: PulleyPrimaryContentControllerDelegate {
     
     func drawerPositionDidChange(drawer: PulleyViewController) {
@@ -371,5 +364,4 @@ extension ViewController: PulleyPrimaryContentControllerDelegate {
         }
     }
 }
-
 

@@ -10,7 +10,6 @@ import Foundation
 import CoreLocation
 import SwiftyJSON
 
-
 struct PhotoDBModel {
     
     let id: String

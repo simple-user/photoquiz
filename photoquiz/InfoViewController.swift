@@ -35,7 +35,6 @@ class InfoViewController: UIViewController {
         }
     }
 
-
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
 
