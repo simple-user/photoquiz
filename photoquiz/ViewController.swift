@@ -19,6 +19,7 @@ class ViewController: UIViewController {
 
     var dbRef: DatabaseReference!
     var storage: Storage!
+    var dataProvider: DataProvider!
 
     // selected models
     var currentModels = [PhotoDBModel]() {
@@ -73,7 +74,9 @@ class ViewController: UIViewController {
     @IBOutlet var topGradient: UIImageView!
 
     override func viewDidLoad() {
-        
+
+        self.dataProvider = FirebaseDataProvider()
+
         self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
 
         let size = CGSize(width: 100, height: 100)
@@ -91,7 +94,8 @@ class ViewController: UIViewController {
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
-        readPhotosFromDB(ref: dbRef, complited: { photoDBModels in
+
+        self.dataProvider.getPhotoModels { photoDBModels in
             self.models = photoDBModels
 
             self.setCurrentItems {
@@ -103,13 +107,13 @@ class ViewController: UIViewController {
                     self.collectionView.alpha = 1.0
                     self.bottomView.alpha = 1.0
                     self.topView.alpha = 1.0
-                }, completion: { _ in
-                    self.collectionView.alpha = 1.0
-                    self.bottomView.alpha = 1.0
-                    self.topView.alpha = 1.0
-                })
+                    }, completion: { _ in
+                        self.collectionView.alpha = 1.0
+                        self.bottomView.alpha = 1.0
+                        self.topView.alpha = 1.0
+                    })
             }
-        })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -270,15 +274,6 @@ class ViewController: UIViewController {
                 completion(image)
             }
         }
-    }
-    
-    private func readPhotosFromDB(ref: DatabaseReference, complited: @escaping (_ dbModels: [PhotoDBModel]) -> Void ) {
-        ref.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            // Get photos
-            guard let value = snapshot.value as? NSDictionary else { return }
-            complited(JSON(value).dictionaryValue.values.map { PhotoDBModel(json: $0) })
-        })
     }
 }
 

@@ -12,6 +12,8 @@
 		11536C211F3E52D900090506 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11536C1F1F3E52D900090506 /* Main.storyboard */; };
 		11536C231F3E52D900090506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11536C221F3E52D900090506 /* Assets.xcassets */; };
 		11536C261F3E52D900090506 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11536C241F3E52D900090506 /* LaunchScreen.storyboard */; };
+		117249BB1F4FAD860019B0C4 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117249BA1F4FAD860019B0C4 /* DataProvider.swift */; };
+		117249BD1F4FAE210019B0C4 /* FirebaseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117249BC1F4FAE210019B0C4 /* FirebaseDataProvider.swift */; };
 		117F297F1F3E5476004EB6D5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F297E1F3E5476004EB6D5 /* MapViewController.swift */; };
 		117F29811F3E556A004EB6D5 /* PhotoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F29801F3E556A004EB6D5 /* PhotoPoint.swift */; };
 		11AC26351F3F1A54002877D0 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC26331F3F1A54002877D0 /* PhotoCollectionViewCell.swift */; };
@@ -34,6 +36,8 @@
 		11536C221F3E52D900090506 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11536C251F3E52D900090506 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11536C271F3E52D900090506 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		117249BA1F4FAD860019B0C4 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataProvider.swift; path = DataProviders/DataProvider.swift; sourceTree = "<group>"; };
+		117249BC1F4FAE210019B0C4 /* FirebaseDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataProvider.swift; sourceTree = "<group>"; };
 		117F297E1F3E5476004EB6D5 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		117F29801F3E556A004EB6D5 /* PhotoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPoint.swift; sourceTree = "<group>"; };
 		11AC26331F3F1A54002877D0 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -83,7 +87,7 @@
 		11536C1A1F3E52D900090506 /* photoquiz */ = {
 			isa = PBXGroup;
 			children = (
-				11A0882C1F4F8FFB00E88F78 /* DataSources */,
+				11A0882C1F4F8FFB00E88F78 /* DataProviders */,
 				11A0882B1F4F8FBD00E88F78 /* Components */,
 				11AC26371F40517F002877D0 /* InfoViewController.swift */,
 				11AC26381F40517F002877D0 /* InfoViewController.xib */,
@@ -121,11 +125,13 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
-		11A0882C1F4F8FFB00E88F78 /* DataSources */ = {
+		11A0882C1F4F8FFB00E88F78 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
+				117249BA1F4FAD860019B0C4 /* DataProvider.swift */,
+				117249BC1F4FAE210019B0C4 /* FirebaseDataProvider.swift */,
 			);
-			name = DataSources;
+			name = DataProviders;
 			sourceTree = "<group>";
 		};
 		27C452A91F40460200B978A2 /* 3d */ = {
@@ -306,8 +312,10 @@
 				27A83EFE1F3EB40D00A1CD1A /* PhotoDBModel.swift in Sources */,
 				27A83F001F3F023500A1CD1A /* Extensions.swift in Sources */,
 				11536C1E1F3E52D900090506 /* ViewController.swift in Sources */,
+				117249BD1F4FAE210019B0C4 /* FirebaseDataProvider.swift in Sources */,
 				117F297F1F3E5476004EB6D5 /* MapViewController.swift in Sources */,
 				11AC26391F40517F002877D0 /* InfoViewController.swift in Sources */,
+				117249BB1F4FAD860019B0C4 /* DataProvider.swift in Sources */,
 				11AC26351F3F1A54002877D0 /* PhotoCollectionViewCell.swift in Sources */,
 				27C452AB1F40460200B978A2 /* SegmentedProgressBar.swift in Sources */,
 				11536C1C1F3E52D900090506 /* AppDelegate.swift in Sources */,
