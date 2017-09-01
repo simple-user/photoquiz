@@ -12,23 +12,27 @@ import SwiftyJSON
 
 class FirebaseDataProvider: DataProvider {
 
-    func getPhotoModels(complited: @escaping (_ dbModels: [PhotoDBModel]) -> Void ) {
+    func getAllPhotoModels(completion: @escaping (_ dbModels: [PhotoDBModel]) -> Void ) {
         self.dbRef.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let value = snapshot.value as? NSDictionary else { return }
-            complited(JSON(value).dictionaryValue.values.map { PhotoDBModel(json: $0) })
+            guard let value = snapshot.value as? NSDictionary
+                else {
+                    completion([])
+                    return
+                }
+            completion(JSON(value).dictionaryValue.values.map { PhotoDBModel(json: $0) })
         })
-
     }
 
-    func getPhoto(withPath path: String, completion: @escaping (UIImage) -> Void) {
+    func getPhoto(withPath path: String, completion: @escaping (UIImage?) -> Void) {
         let gsReference = storage.reference(forURL: path)
         gsReference.getData(maxSize: 3 * 1024 * 1024) { data, error in
             if let error = error {
                 debugPrint(error)
-                completion(#imageLiteral(resourceName: "noimage"))
+                completion(nil)
             } else if let data = data {
-                let image = UIImage(data: data) ?? #imageLiteral(resourceName: "noimage")
-                completion(image)
+                completion(UIImage(data: data))
+            } else {
+                completion(nil)
             }
         }
     }

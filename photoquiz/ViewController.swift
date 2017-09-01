@@ -14,12 +14,14 @@ import Presentr
 import StepProgressBar
 import Kingfisher
 import NVActivityIndicatorView
+import RxSwift
 
 class ViewController: UIViewController {
 
     var dbRef: DatabaseReference!
     var storage: Storage!
     var dataProvider: DataProvider!
+    var randomDataProvider: RandomDataProvider!
 
     // selected models
     var currentModels = [PhotoDBModel]() {
@@ -55,13 +57,6 @@ class ViewController: UIViewController {
         return customPresenter
     }()
 
-    // all points from db
-    var models = [PhotoDBModel]() {
-        didSet {
-            debugPrint("we have \(models.count) photos")
-        }
-    }
-
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var guessedLabel: UIStackView!
@@ -76,6 +71,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
 
         self.dataProvider = FirebaseDataProvider()
+        self.randomDataProvider = RandomDataProvider()
 
         self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
 
@@ -94,28 +90,37 @@ class ViewController: UIViewController {
 
         dbRef = Database.database().reference()
         storage = Storage.storage()
-
-        self.dataProvider.getPhotoModels { photoDBModels in
-            self.models = photoDBModels
-
-            self.setCurrentItems {
-                // here ready to go! :)
-                self.activityIndicator.stopAnimating()
-                self.collectionView.reloadData()
-
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.collectionView.alpha = 1.0
-                    self.bottomView.alpha = 1.0
-                    self.topView.alpha = 1.0
-                    }, completion: { _ in
-                        self.collectionView.alpha = 1.0
-                        self.bottomView.alpha = 1.0
-                        self.topView.alpha = 1.0
-                    })
-            }
-        }
     }
-    
+
+    private let disposeBag = DisposeBag()
+
+    private func setSsubscribers() {
+        self.randomDataProvider.isPhotosReady
+            .asObservable()
+            .skip(1)
+            .filter { $0 }
+            .subscribe(onNext: { _ in
+                self.setCurrentItems {
+                    self.allDataDidPrepared()
+                }
+            }).disposed(by: self.disposeBag)
+    }
+
+    private func allDataDidPrepared() {
+        self.activityIndicator.stopAnimating()
+        self.collectionView.reloadData()
+
+        UIView.animate(withDuration: 0.5, animations: {
+            self.collectionView.alpha = 1.0
+            self.bottomView.alpha = 1.0
+            self.topView.alpha = 1.0
+        }, completion: { _ in
+            self.collectionView.alpha = 1.0
+            self.bottomView.alpha = 1.0
+            self.topView.alpha = 1.0
+        })
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
@@ -140,12 +145,12 @@ class ViewController: UIViewController {
     }
 
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
-        self.currentModels = getRandomModels(dummyCount: 5, trueModel: nil)
+        self.currentModels = self.randomDataProvider.getRandomPhotoModels(count: 5)
         self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
 
         for index in 0 ..< self.currentModels.count {
-            self.dataProvider.getPhoto(withPath: self.currentModels[index].path, completion: { image in
-
+            self.dataProvider.getPhoto(withPath: self.currentModels[index].path, completion: { optImage in
+                let image = optImage ?? #imageLiteral(resourceName: "noimage")
                 self.currentImages[index] = image
                 if index == 0 {
                     DispatchQueue.main.async {
@@ -209,7 +214,7 @@ class ViewController: UIViewController {
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
         if let drawer = self.parent as? PulleyViewController
         {
-            let dummyPoints = self.getRandomModels(dummyCount: 4, trueModel: trueModel)
+            let dummyPoints = self.randomDataProvider.getRandomPhotoModels(count: 4, truePhotoModelId: trueModel.id)
 
             var resultPoints = convertModelsToPoints(models: dummyPoints)
             resultPoints.append(PhotoPoint(pointId: trueModel.id,
@@ -223,24 +228,6 @@ class ViewController: UIViewController {
         }
     }
 
-    // need true model not to take the same dummy model 
-    private func getRandomModels(dummyCount: Int = 5, trueModel: PhotoDBModel?) -> [PhotoDBModel] {
-
-        var resultModels = [PhotoDBModel]()
-
-        for model in models.shuffled() {
-            if trueModel == nil || model.id != trueModel!.id {
-                resultModels.append(model)
-
-                if resultModels.count == dummyCount {
-                    break
-                }
-            }
-        }
-
-        return resultModels
-    }
-    
     private func convertModelsToPoints(models: [PhotoDBModel]) -> [PhotoPoint] {
         guard models.first != nil else { return [] }
         let points = models.map {

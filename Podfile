@@ -15,5 +15,6 @@ target 'photoquiz' do
   pod 'Kingfisher', '~> 3.10'
   pod 'NVActivityIndicatorView', '~> 3.7'
   pod 'SwiftLint'
+  pod 'RxSwift'
   
 end

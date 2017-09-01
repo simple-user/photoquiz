@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1108D3C31F50A67D0046EB00 /* RandomDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108D3C21F50A67D0046EB00 /* RandomDataProvider.swift */; };
 		11536C1C1F3E52D900090506 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11536C1B1F3E52D900090506 /* AppDelegate.swift */; };
 		11536C1E1F3E52D900090506 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11536C1D1F3E52D900090506 /* ViewController.swift */; };
 		11536C211F3E52D900090506 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11536C1F1F3E52D900090506 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1108D3C21F50A67D0046EB00 /* RandomDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomDataProvider.swift; path = DataProviders/RandomDataProvider.swift; sourceTree = "<group>"; };
 		11536C181F3E52D900090506 /* photoquiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photoquiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11536C1B1F3E52D900090506 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11536C1D1F3E52D900090506 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				117249BA1F4FAD860019B0C4 /* DataProvider.swift */,
 				117249BC1F4FAE210019B0C4 /* FirebaseDataProvider.swift */,
+				1108D3C21F50A67D0046EB00 /* RandomDataProvider.swift */,
 			);
 			name = DataProviders;
 			sourceTree = "<group>";
@@ -245,7 +248,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz-resources.sh\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-photoquiz/Pods-photoquiz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		35F7E2BFE12739FE6819850C /* [CP] Check Pods Manifest.lock */ = {
@@ -279,6 +282,7 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulley/Pulley.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/StepProgressBar/StepProgressBar.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -292,6 +296,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulley.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepProgressBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -310,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A83EFE1F3EB40D00A1CD1A /* PhotoDBModel.swift in Sources */,
+				1108D3C31F50A67D0046EB00 /* RandomDataProvider.swift in Sources */,
 				27A83F001F3F023500A1CD1A /* Extensions.swift in Sources */,
 				11536C1E1F3E52D900090506 /* ViewController.swift in Sources */,
 				117249BD1F4FAE210019B0C4 /* FirebaseDataProvider.swift in Sources */,
