@@ -341,11 +341,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Od5-sZ-xs4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9PA-lw-seZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UFw-Lp-WZj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                                 <connections>
                                     <outlet property="delegate" destination="lmM-3w-noh" id="6s7-6O-ZSd"/>
                                 </connections>
@@ -423,6 +423,6 @@
         <image name="windmills" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sjc-cX-0cg"/>
+        <segue reference="HiL-Y5-Ddh"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,9 +9,7 @@
 import Foundation
 import RxSwift
 
-
 class RandomDataProvider {
-
 
     let isPhotosReady = Variable<Bool>(false)
 
@@ -49,6 +47,4 @@ class RandomDataProvider {
 
     private var photoModels = [PhotoDBModel]()
     private let dataProvider: DataProvider = FirebaseDataProvider()
-
-
 }

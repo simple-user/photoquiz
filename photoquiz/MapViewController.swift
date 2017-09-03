@@ -46,8 +46,8 @@ class MapViewController: UIViewController {
     let infoController = InfoViewController()
     fileprivate let presenter: Presentr = {
 
-        let customPresenter = Presentr(presentationType: .alert)
-        customPresenter.transitionType = TransitionType.coverVertical
+        let customPresenter = Presentr(presentationType: .dynamic(center: ModalCenterPosition.topCenter))
+        customPresenter.transitionType = TransitionType.coverVerticalFromTop
         customPresenter.dismissTransitionType = .crossDissolve
         customPresenter.roundCorners = false
         customPresenter.backgroundColor = .black

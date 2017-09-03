@@ -16,9 +16,9 @@ class InfoViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        var frame = self.view.frame
-        frame.origin = CGPoint(x: 24.0, y: 183.0)
-        self.view.frame = frame
+//        var frame = self.view.frame
+//        frame.origin = CGPoint(x: 24.0, y: 183.0)
+//        self.view.frame = frame
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,10 +35,10 @@ class InfoViewController: UIViewController {
         }
     }
 
-    @IBOutlet var messageLabel: UILabel!
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet private var messageLabel: UILabel!
+    @IBOutlet private var imageView: UIImageView!
 
-    @IBAction func onButton(_ sender: UIButton) {
+    @IBAction private func onButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: self.dismissCompletion)
         if isTrueAnswer ?? true {
             self.onButtinComletion?()

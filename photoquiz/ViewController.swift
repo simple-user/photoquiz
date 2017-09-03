@@ -18,11 +18,6 @@ import RxSwift
 
 class ViewController: UIViewController {
 
-    var dbRef: DatabaseReference!
-    var storage: Storage!
-    var dataProvider: DataProvider!
-    var randomDataProvider: RandomDataProvider!
-
     // selected models
     var currentModels = [PhotoDBModel]() {
         didSet {
@@ -33,20 +28,16 @@ class ViewController: UIViewController {
     var guessedIndexes = [Int]()
     // three images prepared to show
     var currentImages = [UIImage]()
-    var currentImage = #imageLiteral(resourceName: "noimage")
-    var previousImage: UIImage?
-    var nextImage: UIImage?
     var currentIndex: Int = 0 {
         didSet {
             stepPB?.progress = currentIndex + 1
         }
     }
     var rightAnswers = 0
-    var spb: SegmentedProgressBar?
     let infoController = InfoViewController()
     let presenter: Presentr = {
 
-        let customPresenter = Presentr(presentationType: .alert)
+        let customPresenter = Presentr(presentationType: .dynamic(center: ModalCenterPosition.center ))
         customPresenter.transitionType = TransitionType.coverVertical
         customPresenter.dismissTransitionType = .crossDissolve
         customPresenter.roundCorners = false
@@ -54,19 +45,24 @@ class ViewController: UIViewController {
         customPresenter.backgroundOpacity = 0.5
         customPresenter.dismissOnSwipe = true
         customPresenter.dismissOnSwipeDirection = .top
+        
         return customPresenter
     }()
 
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var guessedLabel: UIStackView!
-    @IBOutlet weak var stepPB: StepProgressBar!
-    @IBOutlet weak var guessButtonImage: UIImageView!
-    @IBOutlet weak var bottomGradient: UIImageView!
-    var activityIndicator: NVActivityIndicatorView!
-    @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var guessButton: UIButton!
-    @IBOutlet var topGradient: UIImageView!
+    @IBOutlet fileprivate var bottomView: UIView!
+    @IBOutlet fileprivate var topView: UIView!
+    @IBOutlet fileprivate var guessedLabel: UIStackView!
+    @IBOutlet fileprivate var stepPB: StepProgressBar!
+    @IBOutlet fileprivate var bottomGradient: UIImageView!
+    @IBOutlet fileprivate var collectionView: UICollectionView!
+    @IBOutlet fileprivate var guessButton: UIButton!
+    @IBOutlet fileprivate var topGradient: UIImageView!
+
+    fileprivate var activityIndicator: NVActivityIndicatorView!
+    fileprivate var dataProvider: DataProvider!
+    fileprivate var randomDataProvider: RandomDataProvider!
+
+    fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
 
@@ -88,13 +84,10 @@ class ViewController: UIViewController {
         self.bottomView.alpha = 0.0
         self.topView.alpha = 0.0
 
-        dbRef = Database.database().reference()
-        storage = Storage.storage()
+        self.setSubscribers()
     }
 
-    private let disposeBag = DisposeBag()
-
-    private func setSsubscribers() {
+    private func setSubscribers() {
         self.randomDataProvider.isPhotosReady
             .asObservable()
             .skip(1)
@@ -121,29 +114,10 @@ class ViewController: UIViewController {
         })
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
-    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    func setupProgressBar(photosCount: Int) {
-
-        spb?.removeFromSuperview()
-        
-        spb = SegmentedProgressBar(numberOfSegments: photosCount, duration: 120)
-        spb?.frame = CGRect(x: 15, y: 28, width: view.frame.width - 30, height: 2)
-        spb?.delegate = self
-        spb?.topColor = UIColor.white
-        spb?.bottomColor = UIColor.white.withAlphaComponent(0.25)
-        spb?.padding = 2
-        self.view.addSubview(spb!)
-        
-        spb?.startAnimation()
-    }
-
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
         self.currentModels = self.randomDataProvider.getRandomPhotoModels(count: 5)
         self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
@@ -153,10 +127,7 @@ class ViewController: UIViewController {
                 let image = optImage ?? #imageLiteral(resourceName: "noimage")
                 self.currentImages[index] = image
                 if index == 0 {
-                    DispatchQueue.main.async {
-                    print("readyToGo()")
                     readyToGo()
-                    }
                 }
             })
         }
@@ -192,7 +163,6 @@ class ViewController: UIViewController {
         }
         let newIndexPath = IndexPath(row: 0, section: currentIndex)
         collectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
-        spb?.skip()
     }
     
     func hideUI(reset: Bool = false) {
@@ -204,7 +174,6 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: { 
             self.guessButton.alpha = CGFloat(alpha)
             self.topGradient.alpha = CGFloat(alpha)
-            self.guessButtonImage.alpha = CGFloat(alpha)
             self.bottomGradient.alpha = CGFloat(alpha)
         }, completion: { _ in
             self.topGradient.isHidden = toHide
@@ -224,7 +193,6 @@ class ViewController: UIViewController {
             mvc.successCallback = showNextImage
             mvc.setPoints(points: resultPoints)
             drawer.setDrawerPosition(position: .open)
-            spb?.isPaused = true
         }
     }
 
@@ -277,11 +245,6 @@ extension ViewController: UIScrollViewDelegate {
             guessedLabel.isHidden = isCurrentPhotoAlreadyGuessed == false
             guessButton.isHidden = isCurrentPhotoAlreadyGuessed
 
-            if index < currentIndex {
-                spb?.rewind()
-            } else if index > currentIndex {
-                spb?.skip()
-            }
             currentIndex = index
         }
     }
@@ -305,13 +268,4 @@ extension ViewController: SegmentedProgressBarDelegate {
     
     }
 
-}
-
-extension ViewController: PulleyPrimaryContentControllerDelegate {
-    
-    func drawerPositionDidChange(drawer: PulleyViewController) {
-        if drawer.drawerPosition == .collapsed || drawer.drawerPosition == .closed {
-            spb?.isPaused = false
-        }
-    }
 }
