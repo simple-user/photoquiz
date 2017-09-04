@@ -4,17 +4,17 @@
 target 'photoquiz' do
 
   use_frameworks!
-  pod 'SwiftIcons', '~> 1.5'
-  pod 'SwiftyJSON', '~> 3.1'
+  pod 'SwiftIcons'
+  pod 'SwiftyJSON'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Pulley'
-  pod 'Presentr', '~> 1.2'
+  pod 'Presentr'
   pod 'StepProgressBar'
-  pod 'Kingfisher', '~> 3.10'
-  pod 'NVActivityIndicatorView', '~> 3.7'
+  pod 'Kingfisher'
+  pod 'NVActivityIndicatorView'
   pod 'SwiftLint'
   pod 'RxSwift'
-  
+  pod 'BRYXBanner'
 end
