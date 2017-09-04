@@ -21,6 +21,7 @@
 		11AC26361F3F1A54002877D0 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AC26341F3F1A54002877D0 /* PhotoCollectionViewCell.xib */; };
 		11AC26391F40517F002877D0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AC26371F40517F002877D0 /* InfoViewController.swift */; };
 		11AC263A1F40517F002877D0 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11AC26381F40517F002877D0 /* InfoViewController.xib */; };
+		11FFA8B11F5E038E0069619D /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA8B01F5E038E0069619D /* PhotoPicker.swift */; };
 		27A83EFC1F3EA0F100A1CD1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */; };
 		27A83EFE1F3EB40D00A1CD1A /* PhotoDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A83EFD1F3EB40D00A1CD1A /* PhotoDBModel.swift */; };
 		27A83F001F3F023500A1CD1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A83EFF1F3F023500A1CD1A /* Extensions.swift */; };
@@ -46,6 +47,7 @@
 		11AC26341F3F1A54002877D0 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		11AC26371F40517F002877D0 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		11AC26381F40517F002877D0 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		11FFA8B01F5E038E0069619D /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		27A83EFB1F3EA0F100A1CD1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27A83EFD1F3EB40D00A1CD1A /* PhotoDBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDBModel.swift; sourceTree = "<group>"; };
 		27A83EFF1F3F023500A1CD1A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		11A0882B1F4F8FBD00E88F78 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				11FFA8B01F5E038E0069619D /* PhotoPicker.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FFA8B11F5E038E0069619D /* PhotoPicker.swift in Sources */,
 				27A83EFE1F3EB40D00A1CD1A /* PhotoDBModel.swift in Sources */,
 				1108D3C31F50A67D0046EB00 /* RandomDataProvider.swift in Sources */,
 				27A83F001F3F023500A1CD1A /* Extensions.swift in Sources */,

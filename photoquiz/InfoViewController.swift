@@ -14,13 +14,6 @@ class InfoViewController: UIViewController {
     var dismissCompletion: (() -> Void)?
     var isTrueAnswer: Bool?
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        var frame = self.view.frame
-//        frame.origin = CGPoint(x: 24.0, y: 183.0)
-//        self.view.frame = frame
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let isTrueAnswer = isTrueAnswer {

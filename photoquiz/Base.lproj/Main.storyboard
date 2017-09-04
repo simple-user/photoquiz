@@ -252,7 +252,7 @@
                                 </constraints>
                                 <state key="normal" image="ic_camera_enhance_48pt"/>
                                 <connections>
-                                    <action selector="takePhoto:" destination="QJc-Ia-Gvq" eventType="touchUpInside" id="JDL-I2-N52"/>
+                                    <action selector="takePhoto" destination="QJc-Ia-Gvq" eventType="touchUpInside" id="9mh-PE-pVj"/>
                                 </connections>
                             </button>
                         </subviews>

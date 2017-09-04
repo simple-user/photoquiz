@@ -10,7 +10,13 @@ import Foundation
 import Firebase
 import SwiftyJSON
 
+private let kPathToNotApprovedPhotos = "photos_notApproved"
+
 class FirebaseDataProvider: DataProvider {
+
+
+    private let dbRef: DatabaseReference = Database.database().reference()
+    private let storage: Storage = Storage.storage()
 
     func getAllPhotoModels(completion: @escaping (_ dbModels: [PhotoDBModel]) -> Void ) {
         self.dbRef.child("photos").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -37,7 +43,25 @@ class FirebaseDataProvider: DataProvider {
         }
     }
 
-    private let dbRef: DatabaseReference = Database.database().reference()
-    private let storage: Storage = Storage.storage()
+    func addData(dataImage: Data, location: (latitude: Double, longitude: Double)) {
 
+        let id = UUID().uuidString
+        let storageRef = self.storage.reference().child("\(kPathToNotApprovedPhotos)/\(id).png")
+
+        let uploadTask = storageRef.putData(dataImage, metadata: nil) { metadata, _ in
+            guard let metadata = metadata else { return }
+
+            // Metadata contains file metadata such as size, content-type, and download URL.
+            let storagePath = "gs://\(metadata.bucket)/\(metadata.path!)"
+
+            let dict = ["id": id,
+                        "path": storagePath,
+                        "location": ["lat": location.latitude,
+                                     "lon": location.longitude]]
+                as [String : Any]
+
+            self.dbRef.child("\(kPathToNotApprovedPhotos)/\(id)").setValue(dict)
+        }
+        uploadTask.resume()
+    }
 }

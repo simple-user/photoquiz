@@ -9,10 +9,14 @@
 import Foundation
 import UIKit
 
-protocol DataProvider: GetItemsProtocol {}
+protocol DataProvider: GetItemsProtocol, AddItemsProtocol {}
 
 protocol GetItemsProtocol {
 
     func getAllPhotoModels(completion: @escaping (_ dbModels: [PhotoDBModel]) -> Void )
     func getPhoto(withPath path: String, completion: @escaping (UIImage?) -> Void)
+}
+
+protocol AddItemsProtocol {
+    func addData(dataImage: Data, location: (latitude: Double, longitude: Double))
 }
