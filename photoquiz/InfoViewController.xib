@@ -86,9 +86,6 @@
                 <constraint firstItem="779-Ve-p7n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XzI-UP-eyf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="translatesAutoresizingMaskIntoConstraints" value="NO"/>
-            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-162.5" y="221.5"/>
         </view>
     </objects>

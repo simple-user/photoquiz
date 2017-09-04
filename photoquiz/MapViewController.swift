@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Pulley
 import Presentr
+import BRYXBanner
 
 class MapViewController: UIViewController {
 
@@ -46,8 +47,8 @@ class MapViewController: UIViewController {
     let infoController = InfoViewController()
     fileprivate let presenter: Presentr = {
 
-        let customPresenter = Presentr(presentationType: .dynamic(center: ModalCenterPosition.topCenter))
-        customPresenter.transitionType = TransitionType.coverVerticalFromTop
+        let customPresenter = Presentr(presentationType: .dynamic(center: ModalCenterPosition.center))
+        customPresenter.transitionType = TransitionType.coverVertical
         customPresenter.dismissTransitionType = .crossDissolve
         customPresenter.roundCorners = false
         customPresenter.backgroundColor = .black
@@ -142,13 +143,19 @@ extension MapViewController: MKMapViewDelegate {
         if pin.isTruePoint {
             self.setImage(#imageLiteral(resourceName: "true"), forView: view)
             self.infoController.isTrueAnswer = true
+            customPresentViewController(self.presenter, viewController: self.infoController, animated: true, completion: nil)
         } else {
-            self.infoController.isTrueAnswer = false
+            let banner = Banner(title: "Ви помилились",
+                                subtitle: nil,
+                                image: #imageLiteral(resourceName: "sad"),
+                                backgroundColor: UIColor(red: 255/256, green: 202/256, blue: 84/256, alpha: 1.0),
+                                didTapBlock: nil)
+            banner.show(duration: 1.0)
             self.setImage(#imageLiteral(resourceName: "fascle"), forView: view)
         }
         self.tappedPoints.insert(pin)
 
-        customPresentViewController(self.presenter, viewController: self.infoController, animated: true, completion: nil)
+
 
     }
 
