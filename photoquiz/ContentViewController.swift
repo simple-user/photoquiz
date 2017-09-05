@@ -10,25 +10,28 @@ import UIKit
 import Photos
 import AssetsLibrary
 import Firebase
+import BRYXBanner
 
 class ContentViewController: UIViewController {
 
     @IBAction func takePhoto() {
-
-        let photoPicker = PhotoPicker(controller: self)
-        photoPicker.takePhoto { result in
+        SharedManager.shared.photoPicker.takePhoto(controller: self,
+                                                   completion: { result in
             switch result {
             case .error: break
             case let .value(image, location):
-                let dataprovider = FirebaseDataProvider()
+                let dataprovider = SharedManager.shared.dataProvider
                 guard let data = image.mediumQualityJPEGNSData else { return }
                 dataprovider.addData(dataImage: data, location: (latitude: location.coordinate.latitude,
                                                                  longitude: location.coordinate.longitude))
-                // to keep photoPicker in memory
-                // needs to improve :)
-                _ = photoPicker.accessibilityActivationPoint
+                Banner(title: "Фото додане",
+                       subtitle: nil,
+                       image: #imageLiteral(resourceName: "star"),
+                       backgroundColor: UIColor.green,
+                       didTapBlock: nil)
+                    .show(duration: 1.0)
             }
-        }
+        })
 
     }
 }

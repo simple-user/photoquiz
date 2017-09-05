@@ -154,9 +154,6 @@ extension MapViewController: MKMapViewDelegate {
             self.setImage(#imageLiteral(resourceName: "fascle"), forView: view)
         }
         self.tappedPoints.insert(pin)
-
-
-
     }
 
     // func to set image for ping (with size correction)

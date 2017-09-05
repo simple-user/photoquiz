@@ -60,14 +60,12 @@ class ViewController: UIViewController {
 
     fileprivate var activityIndicator: NVActivityIndicatorView!
     fileprivate var dataProvider: DataProvider!
-    fileprivate var randomDataProvider: RandomDataProvider!
 
     fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
 
         self.dataProvider = FirebaseDataProvider()
-        self.randomDataProvider = RandomDataProvider()
 
         self.collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "photoCell")
 
@@ -88,7 +86,7 @@ class ViewController: UIViewController {
     }
 
     private func setSubscribers() {
-        self.randomDataProvider.isPhotosReady
+        SharedManager.shared.areAllPhotosRenew
             .asObservable()
             .skip(1)
             .filter { $0 }
@@ -119,7 +117,8 @@ class ViewController: UIViewController {
     }
     
     fileprivate func setCurrentItems(readyToGo: @escaping () -> Void) {
-        self.currentModels = self.randomDataProvider.getRandomPhotoModels(count: 5)
+        self.currentModels = SharedManager.shared.dataProvider.getRandomPhotoModels(from: SharedManager.shared.allPhotoModels,
+                                                                                    count: 5)
         self.currentImages = self.currentModels.map { _  in #imageLiteral(resourceName: "noimage") }
 
         for index in 0 ..< self.currentModels.count {
@@ -183,7 +182,9 @@ class ViewController: UIViewController {
     fileprivate func onShowMap(trueModel: PhotoDBModel) {
         if let drawer = self.parent as? PulleyViewController
         {
-            let dummyPoints = self.randomDataProvider.getRandomPhotoModels(count: 4, truePhotoModelId: trueModel.id)
+            let dummyPoints = SharedManager.shared.dataProvider.getRandomPhotoModels(from: SharedManager.shared.allPhotoModels,
+                                                                                     count: 4,
+                                                                                     truePhotoModelId: trueModel.id)
 
             var resultPoints = convertModelsToPoints(models: dummyPoints)
             resultPoints.append(PhotoPoint(pointId: trueModel.id,

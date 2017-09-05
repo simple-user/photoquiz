@@ -15,6 +15,8 @@ protocol GetItemsProtocol {
 
     func getAllPhotoModels(completion: @escaping (_ dbModels: [PhotoDBModel]) -> Void )
     func getPhoto(withPath path: String, completion: @escaping (UIImage?) -> Void)
+    func getRandomPhotoModels(from photoModels: [PhotoDBModel], count: Int, truePhotoModelId: String?) -> [PhotoDBModel]
+    func getRandomPhotoModels(from photoModels: [PhotoDBModel], count: Int) -> [PhotoDBModel]
 }
 
 protocol AddItemsProtocol {

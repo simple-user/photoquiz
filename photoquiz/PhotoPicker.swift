@@ -19,13 +19,11 @@ class PhotoPicker: NSObject, UIImagePickerControllerDelegate, UINavigationContro
     }
 
     private var image: UIImage?
-    private weak var controller: UIViewController?
     private let imagePicker = UIImagePickerController()
     private let locationManager = CLLocationManager()
     private var completion: ((_ result: Result) -> Void)?
 
-    init(controller: UIViewController) {
-        self.controller = controller
+    override init() {
         super.init()
 
         self.imagePicker.delegate = self
@@ -37,9 +35,9 @@ class PhotoPicker: NSObject, UIImagePickerControllerDelegate, UINavigationContro
     }
 
     // MARK: - Take image
-    func takePhoto(completion: @escaping (_ result: Result) -> Void) {
+    func takePhoto(controller: UIViewController, completion: @escaping (_ result: Result) -> Void) {
         self.completion = completion
-        controller?.present(imagePicker, animated: true, completion: nil)
+        controller.present(imagePicker, animated: true, completion: nil)
     }
 
     // MARK: - Done image capturing

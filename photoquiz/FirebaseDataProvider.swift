@@ -14,7 +14,6 @@ private let kPathToNotApprovedPhotos = "photos_notApproved"
 
 class FirebaseDataProvider: DataProvider {
 
-
     private let dbRef: DatabaseReference = Database.database().reference()
     private let storage: Storage = Storage.storage()
 
@@ -41,6 +40,33 @@ class FirebaseDataProvider: DataProvider {
                 completion(nil)
             }
         }
+    }
+
+    func getRandomPhotoModels(from photoModels: [PhotoDBModel], count: Int) -> [PhotoDBModel] {
+        return self.getRandomPhotoModels(from: photoModels, count: count, truePhotoModelId: nil)
+    }
+    
+    func getRandomPhotoModels(from photoModels: [PhotoDBModel], count: Int, truePhotoModelId: String?) -> [PhotoDBModel] {
+
+        if count >= photoModels.count {
+            return photoModels
+        }
+
+        var resDic = [UInt32: PhotoDBModel]()
+        var randomIndex: UInt32 = 0
+
+        for _ in 0 ..< count {
+
+            repeat {
+                randomIndex = arc4random_uniform(UInt32(photoModels.count))
+            } while !(resDic[randomIndex] == nil &&
+                (truePhotoModelId == nil || truePhotoModelId! != photoModels[Int(randomIndex)].id)
+            )
+
+            resDic[randomIndex] = photoModels[Int(randomIndex)]
+
+        }
+        return resDic.values.map { $0 }
     }
 
     func addData(dataImage: Data, location: (latitude: Double, longitude: Double)) {
